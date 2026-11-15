@@ -110,6 +110,11 @@
       padding: 26px; display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 24px; align-items: center; margin-bottom: 24px;
     }
     .stage-banner img { width: 100%; height: 220px; object-fit: cover; object-position: center 20%; border-radius: 14px; }
+    .yt-wrap {
+      position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--line); background: #1a1614; margin-top: 18px;
+    }
+    .yt-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
     .review-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .review-card {
@@ -168,7 +173,7 @@
         </div>
       </div>
       <ul class="profile-list">
-        <li>· 서울예고 · 이화여대 장학생 졸업</li>
+        <li>· 서울예고 · 이화여대 졸업 (장학생 입학)</li>
         <li>· 정경화 교수 추천 대관령 국제음악제 장학생</li>
         <li>· 전 국제학교 영어 음악교사 · 영어/한국어 레슨</li>
         <li>· 전국·해외 Google Meet 화상 & 용인 죽전 대면</li>
@@ -344,6 +349,14 @@
       </div>
       <img src="assets/concert_hall.jpg" alt="바이올리니스트 이정은 연주 무대">
     </div>
+    <div class="card" style="margin-bottom:28px;">
+      <span class="card-tag">PERFORMANCE · 선생님 연주</span>
+      <h3 class="serif" style="font-size:21px; margin-bottom:6px;">바이올리니스트 이정은 연주 영상</h3>
+      <p style="margin-bottom:0;">직접 연주하는 소리까지 확인해 보시고 레슨을 선택하세요.</p>
+      <div class="yt-wrap">
+        <iframe src="https://www.youtube.com/embed/AK-uWB0u9fU" title="바이올리니스트 이정은 연주 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
     <div class="sec-head" style="margin-top:32px;">
       <span>REVIEWS</span>
       <h2 class="serif">실제 수강생 · 학부모님 후기</h2>
@@ -369,9 +382,12 @@
     <div class="review-cta">
       <div>
         <div class="review-quote">“어제 아이 바이올린 소리 듣고 깜짝 놀랐어요. 언제 이렇게 소리가 좋아졌을까요? 💗”</div>
-        <div class="review-meta" style="margin-top:4px;">레슨 일정·자료 구매는 카카오톡 채널로 가장 빠르게 답변해 드립니다.</div>
+        <div class="review-meta" style="margin-top:4px;">더 많은 실제 카톡 후기는 네이버 블로그 공지에서도 확인하실 수 있습니다.</div>
       </div>
-      <a href="http://pf.kakao.com/_CxlPnn" target="_blank" rel="noopener" class="btn-primary" style="white-space:nowrap;">카카오톡 채널로 문의하기</a>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="https://m.blog.naver.com/gloriaviolin/223828663467" target="_blank" rel="noopener" class="btn-outline" style="white-space:nowrap;">블로그 후기 더 보기</a>
+        <a href="http://pf.kakao.com/_CxlPnn" target="_blank" rel="noopener" class="btn-primary" style="white-space:nowrap;">카카오톡 채널로 문의하기</a>
+      </div>
     </div>
   </section>
 
