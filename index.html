@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>글로리아 바이올린 | GLORIA VIOLIN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --card: #FFFFFF;
+      --ink: #231F1D;
+      --muted: #6E655F;
+      --accent: #8B5E3C;
+      --accent-dark: #6D472B;
+      --line: #E8DFD3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+    .serif { font-family: 'Noto Serif KR', serif; }
+    header {
+      background: rgba(250, 247, 242, 0.94);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 24px;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; letter-spacing: 0.04em; color: var(--accent-dark); }
+    .logo img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
+    .nav-links { display: flex; gap: 22px; font-size: 14px; font-weight: 500; color: var(--muted); }
+    .nav-links a { text-decoration: none; color: inherit; }
+
+    .hero {
+      max-width: 1080px; margin: 0 auto; padding: 56px 24px 48px;
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; align-items: center;
+    }
+    .badge {
+      display: inline-block; padding: 5px 12px; border-radius: 999px;
+      background: #EFE6D8; color: var(--accent-dark); font-size: 12px; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: 36px; line-height: 1.3; margin-bottom: 18px; color: var(--ink); }
+    .hero p { color: var(--muted); font-size: 16px; margin-bottom: 26px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #fff; padding: 13px 24px; border-radius: 10px;
+      text-decoration: none; font-weight: 600; font-size: 15px; border: none; cursor: pointer;
+    }
+    .btn-outline {
+      border: 1px solid var(--accent); color: var(--accent-dark); padding: 13px 22px; border-radius: 10px;
+      text-decoration: none; font-weight: 600; font-size: 15px; background: #fff;
+    }
+    .profile-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+      padding: 24px; box-shadow: 0 12px 30px rgba(35, 31, 29, 0.05);
+    }
+    .profile-top { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+    .profile-photo { width: 82px; height: 98px; border-radius: 14px; object-fit: cover; object-position: top; border: 1px solid var(--line); }
+    .profile-card h3 { font-size: 18px; margin-bottom: 2px; color: var(--accent-dark); }
+    .profile-list { list-style: none; font-size: 14px; color: var(--muted); }
+    .profile-list li { padding: 6px 0; border-bottom: 1px dashed var(--line); }
+    .profile-list li:last-child { border-bottom: none; }
+
+    section { max-width: 1080px; margin: 0 auto; padding: 44px 24px; }
+    .sec-head { margin-bottom: 24px; }
+    .sec-head span { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; }
+    .sec-head h2 { font-size: 26px; margin-top: 6px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .video-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .video-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .video-card video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; background: #1a1614; }
+    .video-cap { padding: 10px 12px; font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+      padding: 24px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .card-thumb { width: 100%; height: 170px; object-fit: cover; object-position: top; border-radius: 10px; margin-bottom: 14px; border: 1px solid var(--line); }
+    .card-tag {
+      display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent);
+      background: #F5EDE2; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; align-self: flex-start;
+    }
+    .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+    .price-row { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--line); }
+    .price { font-size: 17px; font-weight: 700; color: var(--accent-dark); }
+    .buy-btn {
+      font-size: 13px; font-weight: 600; color: #fff; background: var(--ink);
+      padding: 8px 14px; border-radius: 8px; text-decoration: none;
+    }
+
+    .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
+    .gallery-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    .gallery-card img { width: 100%; height: 240px; object-fit: cover; display: block; }
+    .gallery-cap { padding: 14px 18px; font-size: 14px; color: var(--muted); }
+
+    .stage-banner {
+      background: #F7F1E7; border: 1px solid #E5D9C7; border-radius: 18px;
+      padding: 26px; display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 24px; align-items: center; margin-bottom: 24px;
+    }
+    .stage-banner img { width: 100%; height: 220px; object-fit: cover; object-position: center 20%; border-radius: 14px; }
+
+    .review-box {
+      background: #F3ECE1; border-radius: 18px; padding: 28px;
+      display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    }
+    .review-quote { font-size: 16px; font-weight: 500; color: var(--ink); }
+    .review-meta { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+    footer {
+      text-align: center; padding: 36px 24px 48px; color: var(--muted); font-size: 13px;
+      border-top: 1px solid var(--line); margin-top: 24px;
+    }
+    @media (max-width: 900px) {
+      .hero, .grid-3, .grid-2, .gallery-grid, .stage-banner { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+      h1 { font-size: 28px; }
+      .review-box { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo serif"><img src="assets/logo.jpg" alt="GLORIA VIOLIN 로고">GLORIA VIOLIN</div>
+      <div class="nav-links">
+        <a href="#lessons">레슨 안내</a>
+        <a href="#videos">수업 영상</a>
+        <a href="#store">악보 · 자료실</a>
+        <a href="#contact">상담 문의</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="badge">프리미엄 글로리아 바이올린 · 이정은</div>
+      <h1 class="serif">기초가 흔들리지 않는<br>1:1 맞춤 바이올린 레슨</h1>
+      <p>유아·초등 입문부터 미국 올스테이트 오디션, 성인 취미 원포인트 교정까지.<br>전국·해외 어디서나 구글 미트 실시간 화상 레슨과 1:1 대면 레슨으로 만납니다.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn-primary">레슨 · 원포인트 상담하기</a>
+        <a href="#store" class="btn-outline">악보 · 연습 자료 보기</a>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-top">
+        <img class="profile-photo" src="assets/profile_studio.jpg" alt="바이올리니스트 이정은 프로필">
+        <div>
+          <h3 class="serif">Violinist 이정은 (GLORIA)</h3>
+          <span style="font-size:12px; color:var(--muted);">연주자 · 바이올린 교육가</span>
+        </div>
+      </div>
+      <ul class="profile-list">
+        <li>· 전국·해외 Google Meet 실시간 화상 레슨</li>
+        <li>· 1:1 맞춤 대면 레슨 (용인 죽전 인근)</li>
+        <li>· 단 1회 보잉·자세 원포인트 클리닉 운영</li>
+        <li>· 미국 올스테이트(All-State) 오디션 대비 코칭</li>
+        <li>· 찬양 바이올린 · 교회 특송 연주자</li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="lessons">
+    <div class="sec-head">
+      <span>LESSONS</span>
+      <h2 class="serif">수업 안내</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div>
+          <span class="card-tag">정규 1:1 레슨</span>
+          <h3>유아 · 초등 · 성인 · 오디션</h3>
+          <p>기초 활 잡기부터 미국 올스테이트 오디션, 성인 취미까지 개개인에 맞춘 1:1 정규 수업입니다.</p>
+        </div>
+        <div class="price-row">
+          <span class="price">상담 후 조율</span>
+          <a href="#contact" class="buy-btn">문의하기</a>
+        </div>
+      </div>
+      <div class="card">
+        <div>
+          <span class="card-tag">인기 프로그램</span>
+          <h3>단 1회 원포인트 레슨</h3>
+          <p>소리, 활 쓰기, 특정 테크닉까지 오래 막혀 있던 문제를 딱 1회 코칭으로 시원하게 뚫어드립니다.</p>
+        </div>
+        <div class="price-row">
+          <span class="price">회당 예약제</span>
+          <a href="#contact" class="buy-btn">신청하기</a>
+        </div>
+      </div>
+      <div class="card">
+        <div>
+          <span class="card-tag">온라인 화상</span>
+          <h3>구글 미트 실시간 레슨</h3>
+          <p>미국·해외 한인 학생 및 타지역 성인 수강생도 세밀한 자세 교정이 가능합니다.</p>
+        </div>
+        <div class="price-row">
+          <span class="price">글로벌 수업</span>
+          <a href="#contact" class="buy-btn">시간표 문의</a>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="assets/lesson_scene.jpg" alt="1:1 맞춤 바이올린 레슨 현장">
+        <div class="gallery-cap">악보와 활 쓰기를 1:1로 꼼꼼히 짚어주는 대면 레슨</div>
+      </div>
+      <div class="gallery-card">
+        <img src="assets/online_lesson.jpg" alt="구글 미트 실시간 화상 레슨">
+        <div class="gallery-cap">미국·해외·타지역 학생과 만나는 Google Meet 화상 레슨</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="sec-head">
+      <span>ACTUAL LESSONS</span>
+      <h2 class="serif">생생한 레슨 현장 영상</h2>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls poster="assets/videos/v1.jpg" preload="metadata"><source src="assets/videos/v1.mp4" type="video/mp4"></video>
+        <div class="video-cap">4세도 즐거운 유아 바이올린 입문</div>
+      </div>
+      <div class="video-card">
+        <video controls poster="assets/videos/v2.jpg" preload="metadata"><source src="assets/videos/v2.mp4" type="video/mp4"></video>
+        <div class="video-cap">꿀잼 바이올린 계이름 공부법</div>
+      </div>
+      <div class="video-card">
+        <video controls poster="assets/videos/v3.jpg" preload="metadata"><source src="assets/videos/v3.mp4" type="video/mp4"></video>
+        <div class="video-cap">열정적인 코칭으로 달라지는 자세</div>
+      </div>
+      <div class="video-card">
+        <video controls poster="assets/videos/v4.jpg" preload="metadata"><source src="assets/videos/v4.mp4" type="video/mp4"></video>
+        <div class="video-cap">수업 후 한 달 만의 실력 변화</div>
+      </div>
+      <div class="video-card">
+        <video controls poster="assets/videos/v5.jpg" preload="metadata"><source src="assets/videos/v5.mp4" type="video/mp4"></video>
+        <div class="video-cap">2주 만에 완성하는 반주 앙상블</div>
+      </div>
+      <div class="video-card">
+        <video controls poster="assets/videos/v6.jpg" preload="metadata"><source src="assets/videos/v6.mp4" type="video/mp4"></video>
+        <div class="video-cap">5개월 기본기 재정비 변화</div>
+      </div>
+      <div class="video-card">
+        <video controls poster="assets/videos/v7.jpg" preload="metadata"><source src="assets/videos/v7.mp4" type="video/mp4"></video>
+        <div class="video-cap">자세 교정만으로 달라지는 소리</div>
+      </div>
+      <div class="video-card">
+        <video controls poster="assets/videos/v8.jpg" preload="metadata"><source src="assets/videos/v8.mp4" type="video/mp4"></video>
+        <div class="video-cap">단 1회 보잉 원포인트 교정</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="store">
+    <div class="sec-head">
+      <span>DIGITAL STORE</span>
+      <h2 class="serif">글로리아 악보 · 연습 자료실</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div>
+          <span class="card-tag">PDF 악보집</span>
+          <h3>찬송가 이중주(듀엣) 악보집</h3>
+          <p>교회 특송과 레슨 연주에 바로 활용할 수 있도록 정성껏 편곡한 바이올린 2중주 악보집입니다.</p>
+        </div>
+        <div class="price-row">
+          <span class="price">5,000원</span>
+          <a href="#contact" class="buy-btn">구매 문의</a>
+        </div>
+      </div>
+      <div class="card">
+        <div>
+          <span class="card-tag">PDF 연습지</span>
+          <h3>스즈키 1권 개방현 연습</h3>
+          <p>스즈키 1권 진도 중 활 쓰기와 개방현 감각을 탄탄히 다져주는 자체 제작 연습 자료입니다.</p>
+        </div>
+        <div class="price-row">
+          <span class="price">5,000원</span>
+          <a href="#contact" class="buy-btn">구매 문의</a>
+        </div>
+      </div>
+      <div class="card">
+        <div>
+          <span class="card-tag">PDF 인쇄용 (2종)</span>
+          <h3>바이올린 연습 도장판</h3>
+          <p>모험 지도형·양 캐릭터형 중 선택할 수 있어, 아이들이 즐겁게 연습 습관을 기르는 도장판입니다.</p>
+        </div>
+        <div class="price-row">
+          <span class="price">각 2,000원</span>
+          <a href="#contact" class="buy-btn">구매 문의</a>
+        </div>
+      </div>
+      <div class="card">
+        <div>
+          <img class="card-thumb" src="assets/fingering_kr.jpg" alt="바이올린 지판 운지 스티커판">
+          <span class="card-tag">PDF 운지 연습판 (3종)</span>
+          <h3>지판 운지 스티커 연습판</h3>
+          <p>솔·레·라·미(한글) / G·D·A·E(영문) / 연습노트 표지까지, 스티커를 직접 붙이며 손가락 자리를 익히는 판입니다.</p>
+        </div>
+        <div class="price-row">
+          <span class="price">각 2,000원 (세트 5,000원)</span>
+          <a href="#contact" class="buy-btn">구매 문의</a>
+        </div>
+      </div>
+      <div class="card">
+        <div>
+          <span class="card-tag">실물 노트</span>
+          <h3>글로리아 바이올린 레슨 노트</h3>
+          <p>직접 제작한 실물 노트에 레슨 피드백과 주간 연습 목표를 기록해 실력을 키우는 전용 레슨 노트입니다.</p>
+        </div>
+        <div class="price-row">
+          <span class="price">준비 중</span>
+          <a href="#contact" class="buy-btn" style="background:#a0968e;">출시 예정</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="stage-banner">
+      <div>
+        <span class="card-tag">GLORIA STAGE · 무대 경험</span>
+        <h3 class="serif" style="font-size:22px; margin-bottom:10px;">어린이 음악회 & 앙상블 프로젝트</h3>
+        <p style="color:var(--muted); font-size:15px;">레슨실 진도에만 머물지 않고, 아이들이 작은 무대 위에서 직접 연주하며 자신감과 합주의 즐거움을 키우는 음악회를 함께 엽니다.</p>
+      </div>
+      <img src="assets/concert_hall.jpg" alt="바이올리니스트 이정은 연주 무대">
+    </div>
+    <div class="review-box">
+      <div>
+        <div class="review-quote">“어제 아이 바이올린 소리 듣고 깜짝 놀랐어요. 언제 이렇게 소리가 좋아졌을까요? 감사합니다 💗”</div>
+        <div class="review-meta">— 실제 수강생 학부모님 후기 중에서</div>
+      </div>
+      <a href="#contact" class="btn-primary">레슨 상담 연결</a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p class="serif" style="font-size:16px; color:#231F1D; margin-bottom:8px;">글로리아 바이올린 레슨 & 자료 문의</p>
+    <p>카카오톡 채널: pf.kakao.com/_CxlPnn &nbsp;|&nbsp; 전화·문자: 010-2268-9891</p>
+    <p style="margin-top:10px; font-size:12px;">© GLORIA VIOLIN. All rights reserved.</p>
+  </footer>
+</body>
+</html>
