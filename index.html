@@ -49,7 +49,7 @@
     .logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; letter-spacing: 0.04em; color: var(--accent-dark); }
     .logo img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
     .nav-links { display: flex; gap: 22px; font-size: 14px; font-weight: 500; color: var(--muted); }
-    .nav-links a { text-decoration: none; color: inherit; }
+    .nav-links a { text-decoration: none; color: inherit; white-space: nowrap; }
 
     .hero {
       max-width: 1080px; margin: 0 auto; padding: 56px 24px 48px;
@@ -149,6 +149,11 @@
       .video-grid { grid-template-columns: repeat(2, 1fr); }
       h1 { font-size: 28px; }
       .review-cta { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 720px) {
+      header { padding: 12px 16px; }
+      .nav { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .nav-links { width: 100%; overflow-x: auto; gap: 14px; font-size: 13px; -webkit-overflow-scrolling: touch; }
     }
   </style>
 </head>
@@ -332,12 +337,12 @@
       <div class="card">
         <div>
           <img class="card-thumb" src="assets/preview_fingering.jpg" alt="바이올린 지판 운지 스티커판 샘플 미리보기">
-          <span class="card-tag">PDF 운지 연습판 (3종)</span>
+          <span class="card-tag">PDF 운지 연습판</span>
           <h3>지판 운지 스티커 연습판</h3>
-          <p>솔·레·라·미(한글) / G·D·A·E(영문) / 연습노트 표지까지, 스티커를 직접 붙이며 손가락 자리를 익히는 판입니다.</p>
+          <p>솔·레·라·미(한글)와 G·D·A·E(영문) 지판은 1개 묶음으로, Practice Notebook 표지는 별도로 선택해 구매하실 수 있습니다.</p>
         </div>
         <div class="price-row">
-          <span class="price">각 2,000원 (세트 5,000원)</span>
+          <span class="price" style="font-size:15px;">지판 3,000원 · 노트표지 2,000원</span>
           <a href="http://pf.kakao.com/_CxlPnn" target="_blank" rel="noopener" class="buy-btn">카톡 구매</a>
         </div>
       </div>
