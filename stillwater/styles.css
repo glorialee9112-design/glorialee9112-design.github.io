@@ -241,26 +241,42 @@ svg{ display: block; }
   width: 3px;
   background: linear-gradient(180deg, rgba(201, 122, 87, .55), rgba(201, 122, 87, .12));
 }
+/* 공책 가로줄과 글자 정렬
+   ─ Gowun Batang 15.5px의 폰트 상자: 위 18px · 아래 4px
+   ─ line-height 34px → 줄 상자 위에서 baseline까지 6 + 18 = 24px
+   ─ padding-top 16px → 첫 줄 baseline = 16 + 24 = 40px
+   ─ 가로줄(1px)은 baseline + 5px(= 45px)에 오도록 background-position 12px
+     (줄 타일 34px의 마지막 1px가 선 → 12 + 33 = 45)
+   ─ background-size를 line-height와 똑같이 고정해 줄 간격이 늘어나지 않게 하고,
+     background-attachment: local로 내용이 스크롤돼도 글자와 줄이 함께 움직입니다. */
 #diaryText{
+  --line-h: 34px;
+  --line-y: 12px;
   display: block;
   width: 100%;
   min-height: 196px;
-  padding: 18px 18px 8px 20px;
+  padding: 16px 18px 8px 20px;
   border: 0;
   outline: 0;
   resize: none;
   background-color: transparent;
-  background-image: repeating-linear-gradient(
-      to bottom,
-      rgba(201, 122, 87, 0) 0,
-      rgba(201, 122, 87, 0) 33px,
-      rgba(201, 122, 87, .11) 33px,
-      rgba(201, 122, 87, .11) 34px);
-  background-position: 0 4px;
-  background-repeat: repeat-y;
+  /* 1층: 줄 간격 때문에 첫 줄 위로 비어져 나온 자투리 줄(위에서 11px)을 카드색으로 덮어 가립니다
+     2층: 공책 가로줄 (줄 타일의 마지막 1px가 선) */
+  background-image:
+      linear-gradient(var(--card), var(--card)),
+      repeating-linear-gradient(
+        to bottom,
+        rgba(201, 122, 87, 0) 0,
+        rgba(201, 122, 87, 0) calc(var(--line-h) - 1px),
+        rgba(201, 122, 87, .1) calc(var(--line-h) - 1px),
+        rgba(201, 122, 87, .1) var(--line-h));
+  background-size: 100% calc(var(--line-y) + 1px), 100% var(--line-h);
+  background-position: 0 0, 0 var(--line-y);
+  background-repeat: no-repeat, repeat-y;
+  background-attachment: local, local;  /* 내용이 스크롤돼도 글자와 줄이 함께 움직임 */
   font-family: var(--serif);
   font-size: 15.5px;
-  line-height: 34px;
+  line-height: var(--line-h);
   letter-spacing: -0.012em;
   color: var(--ink);
   caret-color: var(--accent);
@@ -270,6 +286,7 @@ svg{ display: block; }
   font-family: var(--serif);
   color: #B7A695;
   font-size: 14.5px;
+  line-height: var(--line-h);
   letter-spacing: -0.005em;
 }
 .paper-foot{

@@ -632,6 +632,29 @@ function syncSaveBtn() {
 }
 
 /* ─────────────────────────────────────────────
+   익명 사용량 집계 (GA4 · G-VLVJEWR7X3)
+   ─────────────────────────────────────────────
+   버튼을 눌렀다는 사실만 셉니다. 고민 본문·이름·연락처 같은
+   개인 정보는 어떤 경우에도 보내지 않습니다. */
+function trackEvent(name, params) {
+  try {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  } catch (err) { /* 집계 실패가 화면을 막지 않게 */ }
+}
+function trackLetterCreated(entry) {
+  trackEvent('stillwater_letter_created', { emotion: (entry && entry.emotionLabel) || '선택 없음' });
+}
+function trackSongClick(entry) {
+  trackEvent('stillwater_song_click', {
+    emotion: (entry && entry.emotionLabel) || '선택 없음',
+    song: (entry && entry.song && entry.song.id) || 'unknown'
+  });
+}
+function trackKakaoOpen(type) {
+  trackEvent('stillwater_kakao_open', { type: type === 'talk' ? 'talk' : 'prayer' });
+}
+
+/* ─────────────────────────────────────────────
    저장 → 위로 카드
    ───────────────────────────────────────────── */
 function onSave() {
@@ -680,6 +703,7 @@ function onSave() {
   show('comfort');
   window.scrollTo(0, 0);
   renderJournal();
+  trackLetterCreated(entry);
 }
 
 /* ─────────────────────────────────────────────
@@ -731,6 +755,7 @@ function comfortMarkup(entry, opts = {}) {
       </section>
 
       <a class="song" href="${escapeHtml(songUrl(entry.song))}" target="_blank" rel="noopener noreferrer"
+         data-song-id="${escapeHtml(entry.song.id)}"
          aria-label="유튜브에서 ${escapeHtml(entry.song.title)} 듣기 (새 창)">
         <span class="song-icon" aria-hidden="true">♪</span>
         <span class="song-body">
@@ -950,7 +975,7 @@ function openSheet(type, entry) {
   if (!conf) return;
 
   const host = CONTACT_URL
-    ? `<p class="sheet-note">카카오톡 오픈채팅방으로 이어져요. 창이 열리지 않으면 <a href="${CONTACT_URL}" target="_blank" rel="noopener">여기서 직접 열 수 있어요</a>.</p>`
+    ? `<p class="sheet-note">카카오톡 오픈채팅방으로 이어져요. 창이 열리지 않으면 <a href="${CONTACT_URL}" target="_blank" rel="noopener" data-kakao-direct>여기서 직접 열 수 있어요</a>.</p>`
     : `<p class="sheet-note">연결 창구 주소가 아직 설정되지 않았어요. 요약은 복사되니, 주소를 받으신 뒤 붙여넣어 주세요.</p>`;
 
   $('#sheetBody').innerHTML = `
@@ -997,6 +1022,8 @@ function closeSheet() {
 async function sendSummary(type) {
   const entry = state.sheet && state.sheet.entry;
   if (!entry) return;
+  // 버튼을 눌렀다는 사실은 복사·이동 결과와 상관없이 한 번 셉니다.
+  trackKakaoOpen(type);
   const summary = summaryOf(entry);
 
   // 새 창을 먼저 열어 팝업 차단에 걸리지 않게 합니다.
@@ -1112,6 +1139,7 @@ function wire() {
     const entry = state.current;
     if (!entry) return;
     if (ev.target.closest('[data-action="copy"]')) { copyEntry(entry); return; }
+    if (ev.target.closest('.song')) trackSongClick(entry);
     const connectBtn = ev.target.closest('[data-connect]');
     if (connectBtn) openSheet(connectBtn.dataset.connect, entry);
   });
@@ -1120,6 +1148,7 @@ function wire() {
     if (ev.target.id === 'sheetBackdrop') closeSheet();
     const closeBtn = ev.target.closest('[data-sheet-close]');
     if (closeBtn) { closeSheet(); return; }
+    if (ev.target.closest('[data-kakao-direct]')) trackKakaoOpen(state.sheet && state.sheet.type);
     const send = ev.target.closest('[data-send]');
     if (send) { sendSummary(send.dataset.send); return; }
     const del = ev.target.closest('[data-confirm-del]');
