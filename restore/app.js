@@ -137,6 +137,7 @@ const TOPIC_SONGS = {
 const EMOTIONS = [
   {
     id: 'tired', label: '지침·번아웃', icon: 'leaf',
+    mood: ['지치', '지침', '피곤', '번아웃', '무기력', '녹초', '쉬고싶', '힘들'],
     letters: [
       [
         '오늘 하루, 생각보다 많은 걸 견디며 여기까지 오셨어요.',
@@ -171,6 +172,7 @@ const EMOTIONS = [
   },
   {
     id: 'anxious', label: '불안·걱정', icon: 'wave',
+    mood: ['불안', '걱정', '초조', '긴장', '두렵', '무섭', '조마조마', '떨려'],
     letters: [
       [
         '걱정이 꼬리를 물고 이어지는 밤이 있지요. 아무리 애써도 생각이 멈추지 않을 때, 스스로를 나무라지 않으셔도 돼요.',
@@ -204,6 +206,7 @@ const EMOTIONS = [
   },
   {
     id: 'lonely', label: '외로움', icon: 'star',
+    mood: ['외롭', '외로', '쓸쓸', '허전', '고독', '혼자인'],
     letters: [
       [
         '오늘은 유난히 마음이 비어 보이는 하루였나 봐요.',
@@ -235,6 +238,7 @@ const EMOTIONS = [
   },
   {
     id: 'hurt', label: '상처·서운함', icon: 'stitch',
+    mood: ['상처', '서운', '속상', '억울', '섭섭', '배신', '화가나'],
     letters: [
       [
         '서운한 마음을 여기까지 들고 오셨네요. 그 마음을 꺼내놓는 일이 얼마나 어려운지 알아요.',
@@ -266,6 +270,7 @@ const EMOTIONS = [
   },
   {
     id: 'stuck', label: '막막함', icon: 'cloud',
+    mood: ['막막', '답답', '갈피', '모르겠', '방향을'],
     letters: [
       [
         '앞이 잘 보이지 않는 시기가 있어요. 아무리 애써도 방향이 잡히지 않고, 하루가 그냥 지나가는 것처럼 느껴지는 때요.',
@@ -297,6 +302,7 @@ const EMOTIONS = [
   },
   {
     id: 'grateful', label: '감사·평안', icon: 'cup',
+    mood: ['감사', '고맙', '평안', '행복', '감동'],
     letters: [
       [
         '오늘 마음에 감사가 남았다는 게 참 좋아요. 좋은 날은 크게 벌어지지 않아서, 지나고 나면 더 소중하게 기억되기도 해요.',
@@ -495,6 +501,7 @@ function guessEmotion(text) {
   let bestScore = 0;
   EMOTIONS.forEach(emo => {
     let score = 0;
+    (emo.mood || []).forEach(k => { if (flat.includes(normalize(k))) score += 2; });
     emo.topics.forEach(t => {
       t.keys.forEach(k => { if (flat.includes(normalize(k))) score += 1; });
     });
