@@ -960,6 +960,14 @@ function openSheet(type, entry) {
     <p class="sheet-desc">${conf.desc}</p>
     <p class="sheet-preview-label">이렇게 보내게 돼요</p>
     <div class="sheet-preview">${escapeHtml(summaryOf(entry))}</div>
+    <div class="sheet-guide">
+      <p class="sheet-guide-title">오픈카톡방이 열리면, 아래 중 <b>하나만</b> 골라 먼저 보내주셔도 좋아요</p>
+      <ul class="sheet-guide-list">
+        <li><span class="num" aria-hidden="true">①</span>그냥 들어주기</li>
+        <li><span class="num" aria-hidden="true">②</span>기도 부탁</li>
+        <li><span class="num" aria-hidden="true">③</span>신앙이 궁금해요</li>
+      </ul>
+    </div>
     <div class="sheet-actions">
       <button class="sheet-primary" type="button" data-send="${type}">${conf.primary}</button>
       <button class="sheet-secondary" type="button" data-sheet-close>지금은 그냥 마음만 담아둘게요</button>
