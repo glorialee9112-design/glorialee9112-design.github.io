@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="마음 한 칸">
+  <rect width="512" height="512" rx="90" fill="#FAF6EE"/>
+  <rect x="116" y="85" width="280" height="330" rx="38" fill="#FFFDF9" stroke="#EADFCF" stroke-width="4"/>
+  <path fill="#C97A57" d="M256 358c-4.6-3.9-8.9-7.5-12.8-10.7-33.4-27.6-45.2-37.4-48.6-57-2.4-13.8 5.2-27.4 18.5-30.9 11-2.9 22.6 1.6 28.9 10.4 6.3-8.8 17.9-13.3 28.9-10.4 13.3 3.5 20.9 17.1 18.5 30.9-3.4 19.6-15.2 29.4-48.6 57-3.9 3.2-8.2 6.8-12.8 10.7Z"/>
+  <path d="M344 386c-9-2-14-8-15-18 10 1 15 7 15 18Z" fill="#7E8F6C"/>
+  <path d="M356 372c8-6 16-7 24-5-4 8-13 11-24 5Z" fill="#7E8F6C"/>
+  <path d="M344 396c4-9 10-15 19-18" stroke="#7E8F6C" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
