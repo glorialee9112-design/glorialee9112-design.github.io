@@ -1659,6 +1659,7 @@ function wire() {
       const next = btn.dataset.lang === 'en' ? 'en' : 'ko';
       if (next === state.lang) return;
       saveLang(next);
+      syncUrlLang(next);
       applyLang(next);
     });
   });
@@ -1736,6 +1737,17 @@ function readLang() {
 
 function saveLang(lang) {
   try { localStorage.setItem(LANG_KEY, lang === 'en' ? 'en' : 'ko'); } catch (err) { }
+}
+
+/* 주소에 ?lang=이 붙어 있으면, 버튼으로 바꿀 때 그 값도 함께 바꿉니다.
+   (공유받은 ?lang=en 주소로 들어온 뒤 한국어를 골라도 새로고침에 되돌아가지 않도록) */
+function syncUrlLang(lang) {
+  try {
+    const href = String((window.location && window.location.href) || '');
+    if (!/[?&]lang=(ko|en)/.test(href)) return;
+    const next = href.replace(/([?&]lang=)(ko|en)/, '$1' + lang);
+    if (window.history && window.history.replaceState) window.history.replaceState(null, '', next);
+  } catch (err) { }
 }
 
 function applyLang(lang) {
