@@ -1,8 +1,8 @@
 /* Restore · 익명 고민 상담소 · 오프라인에서도 열리도록 하는 최소 서비스 워커
-   - 문서(navigation)는 네트워크 우선, 실패하면 캐시 → 수정한 내용이 바로 반영됩니다.
-   - 그 밖의 파일은 캐시 우선 + 백그라운드 갱신.
+   - 문서(navigation)와 앱 파일(html/css/js)은 네트워크 우선 → 고단 뒤 수정한 내용이 바로 반영됩니다.
+   - 네트워크가 없으면 캐시로 열립니다.
    - 경로는 모두 상대경로(./)라 GitHub Pages 하위 경로(/restore/)에서도 그대로 동작합니다. */
-const CACHE = 'restore-v2';
+const CACHE = 'restore-v3';
 const SHELL = [
   './',
   'index.html',
@@ -48,17 +48,14 @@ self.addEventListener('fetch', event => {
   }
 
   event.respondWith(
-    caches.match(req).then(hit => {
-      const network = fetch(req)
-        .then(res => {
-          if (res && res.status === 200) {
-            const copy = res.clone();
-            caches.open(CACHE).then(c => c.put(req, copy));
-          }
-          return res;
-        })
-        .catch(() => hit);
-      return hit || network;
-    })
+    fetch(req)
+      .then(res => {
+        if (res && res.status === 200) {
+          const copy = res.clone();
+          caches.open(CACHE).then(c => c.put(req, copy));
+        }
+        return res;
+      })
+      .catch(() => caches.match(req).then(hit => hit || caches.match('index.html')))
   );
 });

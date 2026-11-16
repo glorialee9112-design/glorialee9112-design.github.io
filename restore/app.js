@@ -714,7 +714,7 @@ function comfortMarkup(entry, opts = {}) {
       </section>
 
       <a class="song" href="${escapeHtml(songUrl(entry.song))}" target="_blank" rel="noopener noreferrer"
-         aria-label="유니버스에서 ${escapeHtml(entry.song.title)} 듣기 (새 창)">
+         aria-label="유튜브에서 ${escapeHtml(entry.song.title)} 듣기 (새 창)">
         <span class="song-icon" aria-hidden="true">♪</span>
         <span class="song-body">
           <span class="mini-label">함께 들으면 좋은 곡</span>
@@ -933,8 +933,8 @@ function openSheet(type, entry) {
   if (!conf) return;
 
   const host = CONTACT_URL
-    ? `<p class="sheet-note">카카오톡 채널로 이어져요. 창이 열리지 않으면 <a href="${CONTACT_URL}" target="_blank" rel="noopener">여기서 직접 열 수 있어요</a>.</p>`
-    : `<p class="sheet-note">연결 창구 주소가 아직 설정되지 않았어요. 요약은 복사되니, 채널 주소를 받으신 뒤 붙여넣어 주세요.</p>`;
+    ? `<p class="sheet-note">카카오톡 오픈채팅방으로 이어져요. 창이 열리지 않으면 <a href="${CONTACT_URL}" target="_blank" rel="noopener">여기서 직접 열 수 있어요</a>.</p>`
+    : `<p class="sheet-note">연결 창구 주소가 아직 설정되지 않았어요. 요약은 복사되니, 주소를 받으신 뒤 붙여넣어 주세요.</p>`;
 
   $('#sheetBody').innerHTML = `
     <button class="sheet-close" type="button" data-sheet-close aria-label="닫기">✕</button>
@@ -987,7 +987,7 @@ async function sendSummary(type) {
   closeSheet();
 
   if (ok && win) toast('고민 요약을 복사했어요. 열린 창에 붙여넣어 주세요.');
-  else if (ok && !win) toast('고민 요약을 복사했어요. 카카오톡 채널을 열어 붙여넣어 주세요.');
+  else if (ok && !win) toast('고민 요약을 복사했어요. 오픈채팅방을 열어 붙여넣어 주세요.');
   else if (!ok) toast('복사가 되지 않았어요. 안내 창에서 직접 선택해 주세요.');
 }
 
