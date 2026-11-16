@@ -361,9 +361,425 @@ const NEUTRAL = {
 };
 
 /* ─────────────────────────────────────────────
+   English (EN) — 위 데이터의 영어판
+   ─────────────────────────────────────────────
+   한국어 데이터는 위에 그대로 두고, 영어는 id(감정·말씀·곡)와
+   주제 라벨(예: '회사')로 짝지어 여기에 둡니다.
+   편지·말씀·곡을 고칠 때는 두 곳을 함께 봐 주세요.
+   ───────────────────────────────────────────── */
+const EN = {
+  verses: {
+    mt1128:  { ref: 'Matthew 11:28',      text: 'Come to me, all you who are weary and burdened, and I will give you rest.' },
+    isa4031: { ref: 'Isaiah 40:31',        text: 'Those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.' },
+    phil46:  { ref: 'Philippians 4:6',     text: 'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.' },
+    pet57:   { ref: '1 Peter 5:7',         text: 'Cast all your anxiety on him, because he cares for you.' },
+    ps48:    { ref: 'Psalm 4:8',           text: 'In peace I will lie down and sleep, for you alone, Lord, make me dwell in safety.' },
+    ps1399:  { ref: 'Psalm 139:9-10',      text: 'If I rise on the wings of the dawn, if I settle on the far side of the sea, even there your hand will guide me, your right hand will hold me fast.' },
+    isa432:  { ref: 'Isaiah 43:2',         text: 'When you pass through the waters, I will be with you; and when you pass through the rivers, they will not sweep over you. When you walk through the fire, you will not be burned; the flames will not set you ablaze.' },
+    ps3418:  { ref: 'Psalm 34:18',         text: 'The Lord is close to the brokenhearted and saves those who are crushed in spirit.' },
+    ps1473:  { ref: 'Psalm 147:3',         text: 'He heals the brokenhearted and binds up their wounds.' },
+    prov356: { ref: 'Proverbs 3:5-6',      text: 'Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.' },
+    isa4319: { ref: 'Isaiah 43:19',        text: 'See, I am doing a new thing! Now it springs up; do you not perceive it? I am making a way in the wilderness and streams in the wasteland.' },
+    jer2911: { ref: 'Jeremiah 29:11',      text: 'For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.' },
+    ps231:   { ref: 'Psalm 23:1',          text: 'The Lord is my shepherd; I lack nothing.' },
+    thess518:{ ref: '1 Thessalonians 5:18', text: 'Give thanks in all circumstances; for this is God\u2019s will for you in Christ Jesus.' },
+    col315:  { ref: 'Colossians 3:15',     text: 'Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful.' },
+    ps11824: { ref: 'Psalm 118:24',        text: 'The Lord has done it this very day; let us rejoice today and be glad.' }
+  },
+
+  /* 곡 제목·아티스트·한 줄 소개 (유튜브 주소는 위 SONGS 그대로 씁니다) */
+  songs: {
+    t1: { title: 'Only by Grace', artist: 'Son Kyung-min', why: 'It says I am here not because I did well, but because of grace \u2014 and that lets me set my strength down for a moment.' },
+    t2: { title: 'You Turned My Sighs to Song', artist: 'Markers Worship', why: 'The song seems to know a heart that has sighed a lot before I can explain it.' },
+    t3: { title: 'All the Way He Has Kept Me', artist: 'Hymn 301', why: 'Good for looking back slowly on the days you have already come through.' },
+    t4: { title: 'My Soul Has Found His Grace', artist: 'Hymn 438', why: 'An old hymn that lets a heavy heart be set down for a while.' },
+    t5: { title: 'Peace Like a River', artist: 'Markers Worship', why: 'The calm refrain cools the heart slowly, like water.' },
+    t6: { title: 'A Prayer for Healing', artist: 'Still Water \u00b7 Violin Praise', why: 'A quiet violin over a prayer, so you can hand over the feelings you cannot put into words.' },
+    t7: { title: 'The Grace of God', artist: 'Still Water \u00b7 Violin Praise', why: 'It makes you look back slowly and see that today, too, was carried by grace rather than by your own strength.' },
+
+    a1: { title: 'If Not for Grace', artist: 'Son Kyung-min', why: 'The words need no explanation, so it is good for letting your thoughts stop for a while.' },
+    a2: { title: 'My Soul Waits in Quiet', artist: 'Song Jung-mi', why: 'For a night when your thoughts get loud, this one helps you find your breath.' },
+    a3: { title: 'Do Not Be Afraid', artist: 'Markers Worship', why: 'The bigger the fear, the better it is to listen slowly.' },
+    a4: { title: 'It Is Well With My Soul', artist: 'Horatio Spafford', why: 'Written by someone who passed through great loss, so you can listen without saying anything.' },
+    a5: { title: 'Do Not Fear', artist: 'Team Luke Worship', why: 'It holds an anxious heart with the words of the Psalms.' },
+    a6: { title: 'When Trouble Fills My Heart', artist: 'Still Water \u00b7 Original', why: 'A short original piece you can listen to while your heart stays unsettled.' },
+    a7: { title: 'Though I Have Nothing to Bring', artist: 'Still Water \u00b7 Violin Praise', why: 'A hymn about the One who stays near on days when what you have looks small.' },
+
+    l1: { title: 'Walking the Road With Jesus', artist: 'Hymn 430', why: 'A hymn that says the road you walk is not walked alone.' },
+    l2: { title: 'Your Love Lets Me Breathe', artist: 'Markers Worship', why: 'Good to play quietly on an evening when you feel alone.' },
+    l3: { title: 'You Are With Me', artist: 'WELOVE', why: 'Psalm 23 becomes the song itself, so even an empty room feels less empty.' },
+    l4: { title: 'Let Us Pray Together', artist: 'Markers Worship', why: 'It gives the feeling that someone is beside you.' },
+    l5: { title: 'Draw Me Nearer', artist: 'Hymn 338', why: 'An old hymn that feels like someone sitting quietly nearby.' },
+    l6: { title: 'Someone Is Praying for You', artist: 'Still Water \u00b7 Violin Praise', why: 'On a night that feels lonely, it tells you that someone is praying for you.' },
+
+    h1: { title: 'Amazing Grace', artist: 'Hymn 305', why: 'A song that can be sung from the lowest place.' },
+    h2: { title: 'The Love of Jesus', artist: 'Hymn 563', why: 'It holds a wounded heart with the simplest words.' },
+    h3: { title: 'That Love', artist: 'Markers Worship', why: 'A song that makes you count the love you have received again.' },
+    h4: { title: 'You Were Born to Be Loved', artist: 'Still Water \u00b7 Violin Praise', why: 'I hope those words sound true for you today, too.' },
+    h5: { title: 'How Deep That Love', artist: 'Park Ji-hyun', why: 'A gentle song whose warm words loosen a hurt a little at a time.' },
+    h6: { title: 'The Faithful Love of the Lord', artist: 'Still Water \u00b7 Violin Praise', why: 'On a day when hurt remains, this plays a love that does not change.' },
+
+    k1: { title: 'In the Lord\u2019s Time / I Love You, I Lift My Voice', artist: 'Still Water \u00b7 Violin Praise', why: 'When your heart gets impatient, the violin plays what it means to wait for the right time.' },
+    k2: { title: 'Through the Wilderness', artist: 'Markers Worship', why: 'A song that says even if now feels like a wilderness, it is a road you are passing through.' },
+    k3: { title: 'In Every Circumstance', artist: 'Markers Worship', why: 'It turns you toward gratitude whatever the situation looks like.' },
+    k4: { title: 'By Your Good Power', artist: 'Markers Worship', why: 'Instead of telling you to try harder, it lets you lean quietly.' },
+    k5: { title: 'The One Who Makes a Way', artist: 'Markers Worship', why: 'A song about the One who makes a road where there seems to be none.' },
+    k6: { title: 'If You Say the Word / The Road I Take', artist: 'Still Water \u00b7 Violin Praise', why: 'When you do not know where to go, this plays a road walked one step at a time by the Word.' },
+
+    g1: { title: 'Great Is Thy Faithfulness', artist: 'Still Water \u00b7 Violin Praise', why: 'A song about mercies that are new every morning.' },
+    g2: { title: 'Thanks Upon Thanks', artist: 'Markers Worship', why: 'A song that lets gratitude spread a little wider.' },
+    g3: { title: 'With Thanksgiving', artist: 'Markers Worship', why: 'It helps you look at an ordinary day with thanks.' },
+    g4: { title: 'Thank You, Lord, Who Saved Me', artist: 'Markers Worship', why: 'A song that makes you look back and be thankful.' },
+    g5: { title: 'How Great Thou Art', artist: 'Hymn 79', why: 'A hymn with a wide heart that makes you glance out the window.' },
+    g6: { title: 'You Are Good', artist: 'Still Water \u00b7 Original', why: 'An original piece about being led kindly even on a day when nothing special happens.' }
+  },
+
+  emotions: {
+    tired: {
+      label: 'Tired \u00b7 Burnout',
+      mood: ['tired', 'exhausted', 'exhausting', 'burnout', 'burned out', 'burnt out', 'drained', 'weary',
+             'fatigue', 'no energy', 'worn out', 'overworked', 'can\u2019t focus', 'cannot focus'],
+      letters: [
+        [
+          'You held on through more than anyone could see today.',
+          'Even a day that looks ordinary can be a small war inside. Some days you keep checking whether you are doing enough; other days you sit still because you cannot start anything at all.',
+          'It is okay to stop on a day like that. Rest is not laziness \u2014 it is how you take care of the body that has to carry you back.',
+          'A warm drink, the lights off, an evening where you answer no one. Let today end with something like that.',
+          'Getting this far was already enough effort.'
+        ],
+        [
+          'Not wanting to do anything right now makes sense. You have been trying for a long time.',
+          'People often say \u201cjust a little more,\u201d but what you need today may not be more strength \u2014 it may be a moment to breathe.',
+          'A plant that is not growing still sends out new leaves when you give it a little water. You look like you need that kind of time.',
+          'For today, you do not have to do anything well. Making it this far is enough.'
+        ]
+      ],
+      topics: {
+        '회사': { label: 'Work', keys: ['work', 'office', 'job', 'overtime', 'boss', 'manager', 'meeting', 'coworker', 'company'],
+          line: 'A day at work can feel unusually long and heavy. Even after you get home, the air of that place seems to stay on your clothes.' },
+        '공부': { label: 'Studies', keys: ['exam', 'exams', 'study', 'studying', 'assignment', 'essay', 'paper', 'thesis', 'grade', 'grades', 'gpa', 'finals', 'midterm', 'school'],
+          line: 'When the work piles up like a mountain and your body will not follow, I know how suffocating that feels.' },
+        '돌봄': { label: 'Caring for others', keys: ['child', 'children', 'kids', 'baby', 'parenting', 'caregiving', 'take care of'],
+          line: 'Caring for someone does not allow a single day off, so the weight feels heavier on some days.' },
+        '가르치는 일': { label: 'Teaching', keys: ['teaching', 'teach', 'students', 'class', 'lesson', 'lessons', 'tutoring', 'lecture'],
+          line: 'Teaching people takes your heart as well, so by the end of the day a tiredness remains that words cannot carry.' },
+        '잠': { label: 'Sleep', keys: ['sleep', 'insomnia', 'awake', 'sleepless', '3am', 'cannot sleep', 'can\u2019t sleep'], verse: 'ps48',
+          line: 'On nights when sleep comes shallow, the mind seems to stay awake with you. Tonight, try turning off the light a little earlier.' },
+        '생활': { label: 'Money and daily life', keys: ['money', 'rent', 'bills', 'debt', 'budget', 'expenses', 'cost of living'],
+          line: 'When money worries pile on top, even resting does not feel restful. I want to acknowledge that too.' }
+      }
+    },
+    anxious: {
+      label: 'Anxious \u00b7 Worried',
+      mood: ['anxious', 'anxiety', 'worried', 'worry', 'worrying', 'nervous', 'scared', 'afraid', 'panic',
+             'stressed', 'stress', 'tense', 'fear', 'overthinking'],
+      letters: [
+        [
+          'There are nights when worry follows worry and no amount of trying stops your thoughts. You do not have to scold yourself for that.',
+          'Anxiety is also a sign that your heart is holding something precious. It means there is something you want to protect.',
+          'You do not have to find the answer tonight. For now, set the worry down beside you, take a sip of water, and let your shoulders drop once.',
+          'Tomorrow\u2019s things can meet tomorrow\u2019s you, with a slightly easier heart.'
+        ],
+        [
+          'Does your mind keep running ahead, living through things that have not happened yet?',
+          'Thinking a lot means you are careful and sincere. But when that mind stays tense for too long, the body gets tired first.',
+          'What you can do in this moment can be very small. Breathe out slowly three times and write down just one thing for today. That is enough.',
+          'I will be hoping with you that the things you fear do not come as large as they look from here.'
+        ]
+      ],
+      topics: {
+        '기다림': { label: 'Waiting for news', keys: ['waiting', 'results', 'result', 'interview', 'acceptance', 'admission', 'score'],
+          line: 'There are times when waiting for an answer tightens your chest. Enduring that time is also a big thing.' },
+        '건강': { label: 'Health', keys: ['health', 'hospital', 'doctor', 'test results', 'surgery', 'diagnosis', 'sick', 'ill'],
+          line: 'When the body is unwell, thoughts grow deeper, and when thoughts grow deeper, the body stiffens more. You have been struggling in between.' },
+        '생활': { label: 'Money and daily life', keys: ['money', 'rent', 'bills', 'debt', 'budget', 'income', 'expenses'],
+          line: 'Money worry follows you quietly all day and wears the heart down. I know that quiet weight.' },
+        '잠': { label: 'Sleep', keys: ['sleep', 'insomnia', 'awake', 'sleepless', 'at night', '3am'], verse: 'ps48',
+          line: 'On nights when your thoughts get clearer as soon as you lie down, that time feels especially long.' },
+        '결정': { label: 'A decision', keys: ['decision', 'decide', 'choice', 'choose', 'should i', 'what to do', 'dilemma'],
+          line: 'When you cannot tell which choice is right, the uncertainty is the hardest part.' },
+        '가족': { label: 'Family', keys: ['family', 'parents', 'mom', 'dad', 'mother', 'father'],
+          line: 'The closer the person, the bigger the worry takes up in your heart.' }
+      }
+    },
+    lonely: {
+      label: 'Lonely',
+      mood: ['lonely', 'loneliness', 'alone', 'isolated', 'homesick', 'miss home', 'miss my family', 'empty', 'left out', 'no friends'],
+      letters: [
+        [
+          'Today must have been a day when your heart felt especially empty.',
+          'There are days when you feel alone even among people, and the air at home feels unfamiliar. On those days you do not have to fill the space by force.',
+          'Loneliness is a heart waiting for someone. Waiting also means your heart is still open.',
+          'For the time it takes to write this, please imagine someone sitting quietly beside you.'
+        ],
+        [
+          'A day when no one messages you is quieter than you expect, and that quiet stays in the heart for a long time.',
+          'People are made to need connection; without it we ache. That does not mean you are weak \u2014 it means you were made to need people.',
+          'Tonight, open the window a little and play one song you love, softly. You may feel that the world has not gone all that far away.',
+          'I hope someone knows that you are here. The one writing this beside you knows.'
+        ]
+      ],
+      topics: {
+        '관계': { label: 'Friends', keys: ['friend', 'friends', 'no message', 'messages', 'group chat', 'hangout', 'meet up', 'text', 'texts', 'texted', 'texting', 'text back', 'reply', 'replied', 'nobody', 'no one'],
+          line: 'The time without a message must have felt especially long today. A waiting heart is very quiet.' },
+        '혼자': { label: 'Being alone', keys: ['alone', 'by myself', 'living alone', 'live alone', 'moved', 'empty room', 'apartment', 'dorm'],
+          line: 'There are days when the sounds of a place you live alone feel unfamiliar. I hope those sounds become a comfort.' },
+        '가족': { label: 'Family', keys: ['holiday', 'birthday', 'thanksgiving', 'christmas', 'new year', 'family'],
+          line: 'There are days when other people\u2019s warmth seems much larger than your own. That feeling is not something to be ashamed of.' },
+        '이별': { label: 'A breakup', keys: ['breakup', 'broke up', 'ex', 'my ex', 'left me', 'dumped', 'goodbye'],
+          line: 'The place where someone used to be still seems to sit there, empty. Places do stay empty for a long time.' },
+        '신앙': { label: 'Faith', keys: ['church', 'faith', 'prayer', 'pray', 'god', 'jesus'],
+          line: 'Loneliness that comes when faith shakes is harder to speak out loud. You can leave that here too.' }
+      }
+    },
+    hurt: {
+      label: 'Hurt \u00b7 Wounded',
+      mood: ['hurt', 'hurts', 'hurt me', 'wounded', 'betrayed', 'betrayal', 'unfair', 'resentful', 'upset', 'angry', 'offended', 'ignored', 'insulted'],
+      letters: [
+        [
+          'You carried that hurt all the way here. I know how hard it is to take it out and show it.',
+          'Wounds often stay longer when they come from words that seemed small. The time you spent pretending to be fine made it hurt more.',
+          'Put down the pressure to understand that person for a while. It is okay to be angry now, and okay not to want to forgive yet.',
+          'Your heart deserves to be cared for gently first.'
+        ],
+        [
+          'The words stayed with you so long that the scene came back again today.',
+          'The person who hurt you may have forgotten; the one who was hurt remembers. That is not because you are careless \u2014 it is because your heart is tender.',
+          'You do not have to sort this out right now. Just remember that those words are not the truth about you.',
+          'You are not someone who deserves to be spoken to that way.'
+        ]
+      ],
+      topics: {
+        '말': { label: 'Words that hurt', keys: ['words', 'said', 'insult', 'criticized', 'criticised', 'yelled', 'mocked', 'rude', 'comment'],
+          line: 'Sometimes words stay with you long after you heard them. Words do live that long.' },
+        '가까운 사이': { label: 'Close relationships', keys: ['friend', 'partner', 'family', 'mom', 'dad', 'sister', 'brother', 'roommate', 'boyfriend', 'girlfriend'],
+          line: 'Hurt from someone close stays longer. Being close means your heart was open that much.' },
+        '믿음': { label: 'Trust', keys: ['betrayed', 'betrayal', 'lied', 'lie', 'promise', 'let me down', 'trust'],
+          line: 'When trust goes off course, the world can look a little different. You must have been shaken there.' },
+        '이별': { label: 'A breakup', keys: ['breakup', 'broke up', 'left me', 'goodbye'],
+          line: 'A parting always seems to stay longer with the one who was left than with the one who left.' },
+        '어린 날': { label: 'Childhood', keys: ['childhood', 'when i was young', 'growing up', 'as a child', 'my parents said'],
+          line: 'Words you heard while growing up can still sit in a corner of your heart. The you of now may hold the you of then.' }
+      }
+    },
+    stuck: {
+      label: 'Stuck \u00b7 Lost',
+      mood: ['stuck', 'lost', 'confused', 'no direction', 'aimless', 'what should i do', 'nowhere to go',
+             'don\u2019t know what to do', 'dont know what to do', 'cannot move forward', 'can\u2019t move forward'],
+      letters: [
+        [
+          'There are seasons when you cannot see ahead. However hard you try, the direction does not come, and the days seem to pass without you.',
+          'People say you should do something more at times like that, but often what you need is to stop and open the map again.',
+          'It is okay not to find life\u2019s answer today. One very small thing you can do today is enough.',
+          'The road does not appear all at once. It shows itself a little as you walk.'
+        ],
+        [
+          'There are days when you know what to do but your hands will not move, and time just passes. That frustration tightens the heart.',
+          'Even when you look still, something inside has been turning over and over. That time is not wasted.',
+          'Today, instead of a big decision, choose one very small thing. A glass of water, clearing the desk \u2014 something your hands can hold.',
+          'You can go at your own speed. You are not late; you are still on the way.'
+        ]
+      ],
+      topics: {
+        '진로': { label: 'Direction in life', keys: ['career', 'future', 'my life', 'major', 'job search', 'graduation', 'graduating', 'purpose'],
+          line: 'When you cannot see ahead, even one step feels heavy. For now, standing still is okay.' },
+        '공부': { label: 'Studies', keys: ['exam', 'study', 'studying', 'assignment', 'thesis', 'paper', 'grade'],
+          line: 'There are times when you know you should but your hands will not move. That is not laziness \u2014 it is a sign of a tired heart.' },
+        '일': { label: 'Work', keys: ['job', 'work', 'business', 'quit', 'change jobs', 'company', 'office'],
+          line: 'There are seasons when you keep asking whether the work you do fits you. That question gets heavier the longer you hold it.' },
+        '신앙': { label: 'Faith', keys: ['prayer', 'pray', 'faith', 'church', 'god', 'silent', 'silence'], verse: 'jer2911',
+          line: 'On days when prayer does not come easily, the silence can feel long. Silence is part of the conversation too.' },
+        '결정': { label: 'A decision', keys: ['decision', 'decide', 'choice', 'choose', 'regret', 'dilemma'],
+          line: 'Sometimes you freeze because either choice feels like it will bring regret. You have already thought about it enough there.' }
+      }
+    },
+    grateful: {
+      label: 'Grateful \u00b7 Peaceful',
+      mood: ['grateful', 'thankful', 'thanks', 'blessed', 'peaceful', 'peace', 'happy', 'joy', 'joyful', 'moved'],
+      letters: [
+        [
+          'It is good that gratitude stayed with you today. Good days do not announce themselves, so they are often remembered more dearly later.',
+          'Noticing that already makes today a little different. The same day stays differently depending on where your eyes rest.',
+          'If you want to keep this feeling, think of one person you were thankful for today. Their day may grow a little warmer too.',
+          'I hope today\u2019s peace carries into tomorrow.'
+        ],
+        [
+          'Today must have had some room in it. Days like this are worth writing down; they become strength later.',
+          'Peace seems to arrive not when something big is solved, but when small things simply feel okay.',
+          'Keep this feeling as it is. On a hard day, if you open this letter again, the you of today will comfort the you of then a little.',
+          'You worked hard today, truly.'
+        ]
+      ],
+      topics: {
+        '감사': { label: 'Gratitude', keys: ['grateful', 'thankful', 'thanks', 'thank you'],
+          line: 'A day when gratitude stays long is a gift in itself.' },
+        '사람': { label: 'People', keys: ['family', 'mom', 'dad', 'parents', 'friend', 'friends', 'people'],
+          line: 'It must have been a day carried by the people beside you.' },
+        '신앙': { label: 'Faith', keys: ['church', 'prayer', 'pray', 'worship', 'service', 'praise', 'god'], verse: 'col315',
+          line: 'Days when the words come close stay in memory. Keep that here so you do not forget.' },
+        '수고': { label: 'Hard work', keys: ['work', 'class', 'lesson', 'project', 'finished', 'presentation'],
+          line: 'I hope the day held as much reward as the work you put in.' },
+        '쉼': { label: 'Rest', keys: ['peace', 'peaceful', 'quiet', 'rest', 'walk', 'calm', 'sabbath'], verse: 'ps11824',
+          line: 'A peaceful day does not announce itself, which makes it more precious.' }
+      }
+    }
+  },
+
+  neutral: {
+    label: 'Today\u2019s heart',
+    letters: [
+      [
+        'You wrote your heart down here today. That in itself is already something you are doing well.',
+        'Some feelings do not settle into words. You do not have to give them a name.',
+        'I cannot know everything you endured today, but the heart that came this far is precious.',
+        'You may read it quietly and close it quietly.'
+      ]
+    ]
+  }
+};
+
+/* 화면 문구 (한국어 · English). HTML의 data-i18n 속성과 app.js가 함께 씁니다. */
+const STR = {
+  brandSub:     ['익명 고민 상담소', 'Anonymous Counseling'],
+  brandAria:    ['고민 쓰기로 이동', 'Go to write'],
+  langAria:     ['언어 선택', 'Language'],
+  lead:         ['말하기 힘든 고민도 괜찮아요. 아무에게도 못 한 이야기를 한 줄만 적어보세요.',
+                 'Even the things that are hard to say out loud are welcome. Write just one line of what you could not tell anyone.'],
+  moodTitle:    ['지금 마음', 'How I feel now'],
+  moodHint:     ['가까운 것 하나만 골라도 좋아요', 'Pick the one that feels closest'],
+  moodAria:     ['오늘의 마음 선택', 'Choose how you feel today'],
+  writeTitle:   ['고민 적어보기', 'Write it down'],
+  taPlaceholder:['오늘 어떤 고민이 있으신가요? 아무에게도 못 한 이야기도 괜찮아요.',
+                 'What is on your mind today? Anything you could not tell anyone is okay.'],
+  taAria:       ['오늘의 고민 적기', 'Write about today'],
+  lockNote:     ['이 글은 이 기기에만 저장돼요', 'Saved only on this device'],
+  clearBtn:     ['지우기', 'Clear'],
+  saveBtn:      ['위로 편지 받아보기', 'Receive a comfort letter'],
+  underNote:    ['담아두면, 이 고민에 맞춘 위로 편지와 말씀을 조용히 건네드릴게요.<br>이름도 연락처도 묻지 않아요.',
+                 'Leave it here and we will quietly hand you a comfort letter and a verse for this worry.<br>We never ask for your name or contact.'],
+  journalEyebrow: ['내 기록', 'My journal'],
+  journalTitle: ['담아둔 고민들', 'Worries I left here'],
+  journalEmpty: ['아직 담아둔 고민이 없어요.', 'Nothing saved here yet.'],
+  emptyMsg:     ['오늘의 고민을 한 줄 적어보는 건<br>어떨까요?', 'Would you like to write<br>one line about today?'],
+  emptyBtn:     ['고민 쓰러 가기', 'Write something'],
+  journalFoot:  ['적으신 고민은 이 기기(브라우저)에만 저장돼요.<br>브라우저 기록을 지우면 함께 사라질 수 있어요.',
+                 'What you write is saved only on this device (this browser).<br>Clearing your browser data may remove it with it.'],
+  tabWrite:     ['고민 쓰기', 'Write'],
+  tabJournal:   ['내 기록', 'Journal'],
+  tabAria:      ['주요 화면', 'Main screens'],
+  savedPill:    ['이 기기에 저장됨', 'Saved on this device'],
+  backWrite:    ['고민 쓰기로', 'Back to writing'],
+  backJournal:  ['내 기록으로', 'Back to journal'],
+
+  cardToday:    ['오늘의 위로', 'Comfort for today'],
+  cardThen:     ['그날의 위로', 'Comfort from that day'],
+  cardTitle:    ['당신의 고민에<br>건네는 위로', 'A comfort letter<br>for your worry'],
+  cardVerse:    ['오늘 곁에 두면 좋은 말씀', 'A verse to keep with you today'],
+  cardSong:     ['함께 들으면 좋은 곡', 'A song to listen with'],
+  cardListen:   ['유튜브에서 듣기', 'Listen on YouTube'],
+  cardCopy:     ['문구 복사하기', 'Copy the letter'],
+  cardSign:     ['— Still Water 드림', '— from Still Water'],
+  songAria:     ['유튜브에서 {title} 듣기 (새 창)', 'Listen to {title} on YouTube (new window)'],
+
+  connectLead:  ['혼자 안고 있기 버거운 고민이라면, 조금 나눠도 괜찮아요.',
+                 'If this is too heavy to carry alone, it is okay to share a little of it.'],
+  connectPrayerTitle: ['이 고민, 조용히 기도·답장 받아보기', 'Ask for quiet prayer and a reply'],
+  connectPrayerDesc:  ['이름 밝히지 않아도 괜찮아요 · 함께 기도하고 짧게 답장드려요',
+                       'No name needed · we will pray with you and reply briefly'],
+  connectTalkTitle:   ['누군가와 조금 더 이야기 나누고 싶어요', 'I would like to talk with someone a little more'],
+  connectTalkDesc:    ['익명으로 편하게 · 하고 싶은 이야기를 나눠요', 'Comfortably and anonymously · we talk about whatever you like'],
+  privacy:      ['적으신 고민은 이 기기에만 저장돼요.', 'What you write is saved only on this device.'],
+
+  safetyAria:   ['위기 상황 안내', 'Crisis support'],
+  safetyTitle:  ['오늘 마음이 많이 무거워 보여서요', 'Your heart looks very heavy today'],
+  safetyBody:   ['혼자 안고 있지 않으셔도 돼요. 이름을 밝히지 않아도, 지금 바로 이야기할 수 있는 곳이 있어요.',
+                 'You do not have to hold this alone. You can talk to someone right now, without giving your name. These lines are free and available in Korea.'],
+  safetyNote:   ['이곳은 위로를 건네는 공간이에요. 전문 상담을 대신하지는 않아요. 가까운 사람에게 지금 이 화면을 보여주셔도 좋습니다.',
+                 'This is a place that offers comfort. It does not replace professional counselling. You may also show this screen to someone near you.'],
+  safety109b:   ['자살예방 상담전화', 'Suicide Prevention Hotline'],
+  safety109i:   ['24시간 · 무료 · 익명으로도 괜찮아요', '24 hours · free · anonymous is fine'],
+  safety1577b:  ['정신건강 위기상담', 'Mental Health Crisis Counseling'],
+  safety1577i:  ['1577-0199 · 24시간 · 무료', '24 hours · free · confidential'],
+  safety119b:   ['지금 위험한 순간이라면', 'If you are in danger right now'],
+  safety119i:   ['구급 · 구조 · 긴급 상담', 'Ambulance · rescue · emergency help'],
+  safety112b:   ['경찰 긴급 신고', 'Police emergency'],
+  safety112i:   ['몸이 위험하다고 느껴질 때', 'If you feel physically unsafe'],
+
+  sheetPrayerTitle: ['이 고민, 조용히 함께 기도할까요', 'Shall we pray with you about this?'],
+  sheetPrayerDesc:  ['혼자 버거운 고민, 익명으로 편하게 이야기 나눌 수 있어요. 적어두신 고민을 보내주시면 조용히 함께 기도하고 짧은 답장을 드릴게요. 이름을 밝히지 않으셔도 괜찮아요. 보내고 나서 마음이 바뀌어도 전혀 문제되지 않아요.',
+                     'If this is too heavy to carry alone, you can talk about it anonymously and comfortably. Send what you wrote and we will pray with you quietly and reply briefly. You do not need to give your name. Changing your mind after sending is completely fine.'],
+  sheetTalkTitle:   ['조금 더 이야기해도 괜찮아요', 'It is okay to talk a little more'],
+  sheetTalkDesc:    ['혼자 버거운 고민이면, 익명으로 편하게 이야기 나눌 수 있어요. 하나님에 대해 궁금한 점이든, 그냥 오늘 있었던 일이든 좋아요. 편한 속도로 이야기해요. 질문이 정리되지 않아도, 그냥 안부만 남기셔도 괜찮습니다.',
+                     'If it helps to say it out loud, you can talk with someone anonymously. Questions about God, or just what happened today \u2014 both are welcome. We go at your pace. Your questions do not need to be sorted out; even a simple hello is fine.'],
+  sheetPrimary:     ['요약 복사하고 카톡 열기', 'Copy summary & open KakaoTalk'],
+  sheetPreviewLabel:['이렇게 보내게 돼요', 'This is what will be sent'],
+  sheetGuideTitle:  ['오픈카톡방이 열리면, 아래 중 <b>하나만</b> 골라 먼저 보내주셔도 좋아요',
+                     'When the open chat opens, pick <b>just one</b> of these and send it first'],
+  sheetGuide1:      ['그냥 들어주기', 'Just listen'],
+  sheetGuide2:      ['기도 부탁', 'Pray for me'],
+  sheetGuide3:      ['신앙이 궁금해요', 'Curious about faith'],
+  sheetSecondary:   ['지금은 그냥 마음만 담아둘게요', 'For now I will just keep it in my heart'],
+  sheetNote:        ['적으신 고민은 이 기기에만 저장돼요. 복사된 요약은 직접 붙여넣기 전까지 어디에도 전송되지 않아요.',
+                     'What you wrote is saved only on this device. The copied summary is not sent anywhere until you paste it yourself.'],
+  sheetHost:        ['카카오톡 오픈채팅방으로 이어져요. 창이 열리지 않으면 <a href="{url}" target="_blank" rel="noopener" data-kakao-direct>여기서 직접 열 수 있어요</a>.',
+                     'This leads to a KakaoTalk open chat. If the window does not open, <a href="{url}" target="_blank" rel="noopener" data-kakao-direct>open it here</a>.'],
+  sheetHostNone:    ['연결 창구 주소가 아직 설정되지 않았어요. 요약은 복사되니, 주소를 받으신 뒤 붙여넣어 주세요.',
+                     'The connection address is not set yet. Your summary is copied \u2014 paste it once you have the address.'],
+  sheetClose:       ['닫기', 'Close'],
+
+  confirmTitle: ['이 기록을 지울까요', 'Delete this entry?'],
+  confirmBody:  ['{date}에 담아둔 고민이 완전히 지워져요. 되돌릴 수 없어요.',
+                 'The worry you saved on {date} will be erased completely. This cannot be undone.'],
+  confirmCancel:['그대로 둘게요', 'Keep it'],
+  confirmDelete:['지우기', 'Delete'],
+
+  emptySave:    ['아직 아무것도 적지 않으셨어요. 한 줄이면 충분해요.', 'You have not written anything yet. One line is enough.'],
+  storageBlocked: ['이 브라우저에는 저장이 막혀 있어요. 창을 닫으면 사라질 수 있어요.',
+                   'This browser is blocking storage. Your entry may disappear if you close the window.'],
+  copyDone:     ['편지 전체를 복사했어요. 어디든 붙여넣어 보세요.', 'The whole letter is copied. Paste it wherever you like.'],
+  copyFail:     ['복사가 되지 않았어요. 길게 눌러 직접 선택해 주세요.', 'Copying did not work. Press and hold to select the text yourself.'],
+  entryMissing: ['이 기록을 찾지 못했어요.', 'I could not find that entry.'],
+  deleted:      ['기록을 지웠어요.', 'Entry deleted.'],
+  connectCopiedWindow: ['고민 요약을 복사했어요. 열린 창에 붙여넣어 주세요.', 'Summary copied. Paste it into the window that opened.'],
+  connectCopiedNoWindow: ['고민 요약을 복사했어요. 오픈채팅방을 열어 붙여넣어 주세요.', 'Summary copied. Open the chat and paste it in.'],
+  connectCopyFail: ['복사가 되지 않았어요. 안내 창에서 직접 선택해 주세요.', 'Copying did not work. Select the text in the sheet yourself.'],
+  clearConfirm: ['적으신 글을 지울까요?', 'Clear what you wrote?'],
+
+  journalCount: ['지금까지 {n}번, 고민을 놓아두셨어요.', '{n} worries are resting here so far.'],
+  journalNoWords: ['글로 남기지 않은 마음', 'A heart with no words'],
+  journalOpenAria: ['{date} 고민 열어보기', 'Open the worry from {date}'],
+  journalDeleteAria: ['이 기록 지우기', 'Delete this entry'],
+
+  summaryHead:  ['[Still Water · 익명 고민 상담소]', '[Still Water · Anonymous Counseling]'],
+  summaryWhat:  ['오늘 쓴 고민:', 'What I wrote today:'],
+  summaryEmptyText: ['오늘은 따로 적지 않고, 마음만 담아두었어요.', 'I did not write anything today; I just left my heart here.'],
+  summaryVerse: ['받은 말씀: {ref}', 'Verse I received: {ref}'],
+  textVerse:    ['[오늘 곁에 두면 좋은 말씀]', '[A verse to keep with you today]'],
+  textSong:     ['[함께 들으면 좋은 곡]', '[A song to listen with]']
+};
+
+const WEEK_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const WEEK_EN_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTH_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+                  'August', 'September', 'October', 'November', 'December'];
+const MONTH_EN_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function ui(key, lang) {
+  const pair = STR[key];
+  const l = (lang || state.lang) === 'en' ? 1 : 0;
+  if (!pair) return key;
+  return pair[l];
+}
+function fill(str, vars) {
+  return String(str).replace(/\{(\w+)\}/g, (m, k) => (vars && vars[k] != null ? vars[k] : m));
+}
+
+/* ─────────────────────────────────────────────
    상태
    ───────────────────────────────────────────── */
 const state = {
+  lang: 'ko',
+  cardOpts: {},
   emotion: null,
   text: '',
   entries: [],
@@ -425,15 +841,22 @@ function parts(d = new Date()) {
     m: d.getMonth() + 1,
     d: d.getDate(),
     w: WEEK[d.getDay()],
+    day: d.getDay(),
     h: d.getHours()
   };
 }
-function fullDate(d = new Date()) {
+function fullDate(d = new Date(), lang) {
   const p = parts(d);
+  if ((lang || state.lang) === 'en') {
+    return `${WEEK_EN[p.day]}, ${MONTH_EN[p.m - 1]} ${p.d}, ${p.y}`;
+  }
   return `${p.y}년 ${p.m}월 ${p.d}일 ${p.w}`;
 }
-function shortDate(d = new Date()) {
+function shortDate(d = new Date(), lang) {
   const p = parts(d);
+  if ((lang || state.lang) === 'en') {
+    return `${MONTH_EN_SHORT[p.m - 1]} ${p.d}, ${WEEK_EN_SHORT[p.day]}`;
+  }
   return `${p.m}월 ${p.d}일 ${p.w}`;
 }
 
@@ -442,6 +865,20 @@ function shortDate(d = new Date()) {
    ───────────────────────────────────────────── */
 function normalize(str) {
   return (str || '').replace(/\s+/g, '').toLowerCase();
+}
+
+/* 한국어는 띄어쓰기를 지우고 부분 문자열로, 영어는 단어 경계로 찾습니다.
+   (예: 'exam'이 'example'에 걸리지 않도록) */
+const ASCII_KEY = /^[a-z0-9'’\- ]+$/i;
+function textHas(text, key) {
+  if (!text || !key) return false;
+  const raw = String(text);
+  if (ASCII_KEY.test(key)) {
+    const hay = ' ' + raw.toLowerCase().replace(/[’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+    const needle = key.toLowerCase().replace(/\s+/g, ' ').trim();
+    return hay.indexOf(' ' + needle + ' ') >= 0;
+  }
+  return normalize(raw).includes(normalize(key));
 }
 
 /* ─────────────────────────────────────────────
@@ -458,69 +895,136 @@ const CRISIS_KEYS = [
   '죽을것같', '죽을거같', '스스로를해치'
 ];
 
+/* 영어 위기 표현 — 단어 경계로 찾아 'examples' 같은 오탐을 피합니다. */
+const CRISIS_KEYS_EN = [
+  'suicide', 'suicidal', 'kill myself', 'killing myself', 'killed myself',
+  'end my life', 'ending my life', 'end it all', 'take my own life',
+  'self harm', 'self-harm', 'selfharm', 'harm myself', 'harming myself',
+  'hurt myself', 'hurting myself', 'cut myself', 'cutting myself',
+  'want to die', 'wanna die', 'wish i was dead', 'wish i were dead',
+  'better off dead', 'no reason to live', 'nothing to live for',
+  'don\u2019t want to live', 'dont want to live', 'can\u2019t go on', 'cant go on', 'cannot go on',
+  'jump off', 'hang myself', 'overdose'
+];
+
 function hasCrisisSignal(text) {
-  const flat = normalize(text);
-  if (!flat) return false;
-  return CRISIS_KEYS.some(k => flat.includes(normalize(k)));
+  if (!normalize(text)) return false;
+  return CRISIS_KEYS.some(k => textHas(text, k)) || CRISIS_KEYS_EN.some(k => textHas(text, k));
 }
 
-function safetyMarkup() {
+function safetyMarkup(lang) {
+  const l = lang === 'en' ? 'en' : 'ko';
+  const line = (num, tel, title, desc) => `
+      <a class="safety-line" href="tel:${tel}">
+        <span class="sl-num">${num}</span>
+        <span class="sl-text"><b>${title}</b><i>${desc}</i></span>
+      </a>`;
+  const lines = l === 'en'
+    ? line('109', '109', ui('safety109b', l), ui('safety109i', l))
+      + line('1577-0199', '15770199', ui('safety1577b', l), ui('safety1577i', l))
+      + line('119', '119', ui('safety119b', l), ui('safety119i', l))
+      + line('112', '112', ui('safety112b', l), ui('safety112i', l))
+    : line('109', '109', ui('safety109b', l), ui('safety109i', l))
+      + line('119', '119', ui('safety119b', l), ui('safety119i', l))
+      + line('112', '112', ui('safety112b', l), ui('safety112i', l));
   return `
-    <aside class="safety" aria-label="위기 상황 안내">
+    <aside class="safety" aria-label="${escapeHtml(ui('safetyAria', l))}">
       <div class="safety-top">
         <span class="safety-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24"><use href="#i-heart"/></svg>
         </span>
         <div>
-          <p class="safety-title">오늘 마음이 많이 무거워 보여서요</p>
-          <p class="safety-body">혼자 안고 있지 않으셔도 돼요. 이름을 밝히지 않아도, 지금 바로 이야기할 수 있는 곳이 있어요.</p>
+          <p class="safety-title">${escapeHtml(ui('safetyTitle', l))}</p>
+          <p class="safety-body">${escapeHtml(ui('safetyBody', l))}</p>
         </div>
-      </div>
-      <a class="safety-line" href="tel:109">
-        <span class="sl-num">109</span>
-        <span class="sl-text"><b>자살예방 상담전화</b><i>24시간 · 무료 · 익명으로도 괜찮아요</i></span>
-      </a>
-      <a class="safety-line" href="tel:119">
-        <span class="sl-num">119</span>
-        <span class="sl-text"><b>지금 위험한 순간이라면</b><i>구급 · 구조 · 긴급 상담</i></span>
-      </a>
-      <a class="safety-line" href="tel:112">
-        <span class="sl-num">112</span>
-        <span class="sl-text"><b>경찰 긴급 신고</b><i>몸이 위험하다고 느껴질 때</i></span>
-      </a>
-      <p class="safety-note">이곳은 위로를 건네는 공간이에요. 전문 상담을 대신하지는 않아요. 가까운 사람에게 지금 이 화면을 보여주셔도 좋습니다.</p>
+      </div>${lines}
+      <p class="safety-note">${escapeHtml(ui('safetyNote', l))}</p>
     </aside>`;
 }
 
+/* 영어 데이터 헬퍼 ─ 감정/주제/말씀/곡을 언어에 맞게 꺼냅니다 */
+function enEmotion(id) {
+  return (EN.emotions && EN.emotions[id]) || null;
+}
+function emotionLabel(emo, lang) {
+  if ((lang || state.lang) === 'en') {
+    if (emo.id === NEUTRAL.id) return EN.neutral.label;
+    const e = enEmotion(emo.id);
+    if (e && e.label) return e.label;
+  }
+  return emo.label;
+}
+function emotionLetters(emo, lang) {
+  if ((lang || state.lang) === 'en') {
+    if (emo.id === NEUTRAL.id) return EN.neutral.letters;
+    const e = enEmotion(emo.id);
+    if (e && e.letters && e.letters.length) return e.letters;
+  }
+  return emo.letters;
+}
+function topicLabel(emo, topic, lang) {
+  if ((lang || state.lang) === 'en') {
+    const e = enEmotion(emo.id);
+    const x = e && e.topics && e.topics[topic.label];
+    if (x && x.label) return x.label;
+  }
+  return topic.label;
+}
+function topicLine(emo, topic, lang) {
+  if ((lang || state.lang) === 'en') {
+    const e = enEmotion(emo.id);
+    const x = e && e.topics && e.topics[topic.label];
+    if (x && x.line) return x.line;
+  }
+  return topic.line;
+}
+function verseFor(id, lang) {
+  if ((lang || state.lang) === 'en' && EN.verses[id]) return { ...EN.verses[id] };
+  return { ...VERSES[id] };
+}
+function songFor(id, lang) {
+  const base = SONGS[id] || {};
+  if ((lang || state.lang) === 'en' && EN.songs[id]) {
+    return { id, title: EN.songs[id].title, artist: EN.songs[id].artist, why: EN.songs[id].why, youtubeUrl: base.youtubeUrl };
+  }
+  return { id, ...base };
+}
+
 function detectTopics(emo, text) {
-  const flat = normalize(text);
-  if (!flat) return [];
+  if (!normalize(text)) return [];
   const found = [];
+  const en = enEmotion(emo.id);
   emo.topics.forEach(t => {
     if (found.length >= 2) return;
-    const hit = t.keys.some(k => flat.includes(normalize(k)));
+    let hit = t.keys.some(k => textHas(text, k));
+    if (!hit && en && en.topics && en.topics[t.label]) {
+      hit = en.topics[t.label].keys.some(k => textHas(text, k));
+    }
     if (hit) found.push(t);
   });
   return found;
 }
 
 function guessEmotion(text) {
-  const flat = normalize(text);
-  if (!flat) return null;
+  if (!normalize(text)) return null;
   let best = null;
   let bestScore = 0;
   EMOTIONS.forEach(emo => {
     let score = 0;
-    (emo.mood || []).forEach(k => { if (flat.includes(normalize(k))) score += 2; });
+    (emo.mood || []).forEach(k => { if (textHas(text, k)) score += 2; });
+    const en = enEmotion(emo.id);
+    ((en && en.mood) || []).forEach(k => { if (textHas(text, k)) score += 2; });
     emo.topics.forEach(t => {
-      t.keys.forEach(k => { if (flat.includes(normalize(k))) score += 1; });
+      t.keys.forEach(k => { if (textHas(text, k)) score += 1; });
+      const x = en && en.topics && en.topics[t.label];
+      ((x && x.keys) || []).forEach(k => { if (textHas(text, k)) score += 1; });
     });
     if (score > bestScore) { bestScore = score; best = emo; }
   });
   return best;
 }
 
-function pickSong(emo, topics, seed, excludeId) {
+function pickSong(emo, topics, seed, excludeId, lang) {
   const pinned = topics.map(t => TOPIC_SONGS[`${emo.id}/${t.label}`]).find(list => list && list.length);
   let pool = (pinned && pinned.length) ? pinned.slice() : emo.songs.slice();
   // 같은 감정이 이어질 때 바로 앞 곡이 또 나오지 않도록 (묶음에 여유가 있을 때만)
@@ -529,35 +1033,38 @@ function pickSong(emo, topics, seed, excludeId) {
     if (rest.length) pool = rest;
   }
   const id = pool[mix(seed + 101) % pool.length] || emo.songs[0];
-  return { id, ...SONGS[id] };
+  return songFor(id, lang);
 }
 
 function compose(emotionId, text, opts = {}) {
+  const lang = (opts.lang || state.lang) === 'en' ? 'en' : 'ko';
   let emo = EMOTIONS.find(e => e.id === emotionId) || null;
   if (!emo) emo = guessEmotion(text) || NEUTRAL;
 
-  const seed = (hash(text || '') + hash(fullDate()) + hash(emo.id || '')) >>> 0;
-  const variant = mix(seed) % emo.letters.length;
+  const seed = (hash(text || '') + hash(fullDate(new Date(), 'ko')) + hash(emo.id || '')) >>> 0;
+  const letters = emotionLetters(emo, lang);
+  const variant = mix(seed) % letters.length;
   const topics = detectTopics(emo, text);
 
-  const base = emo.letters[variant].slice();
+  const base = letters[variant].slice();
   const letter = [];
   base.forEach((line, i) => {
     letter.push(line);
-    if (i === 0 && topics.length) letter.push(topics[0].line);
+    if (i === 0 && topics.length) letter.push(topicLine(emo, topics[0], lang));
   });
 
   const verseId = (topics.find(t => t.verse) || {}).verse
     || emo.verses[mix(seed + 17) % emo.verses.length];
-  const song = pickSong(emo, topics, seed, opts.excludeSong || null);
+  const song = pickSong(emo, topics, seed, opts.excludeSong || null, lang);
 
   return {
+    lang,
     emotionId: emo.id,
-    emotionLabel: emo.label,
+    emotionLabel: emotionLabel(emo, lang),
     letter,
-    verse: { ...VERSES[verseId] },
+    verse: verseFor(verseId, lang),
     song,
-    topics: topics.map(t => t.label)
+    topics: topics.map(t => topicLabel(emo, t, lang))
   };
 }
 
@@ -584,11 +1091,16 @@ function paintHeader() {
   const now = new Date();
   const p = parts(now);
   const hour = p.h;
-  $('#todayLine').textContent = fullDate(now);
-  $('#topDate').textContent = shortDate(now);
+  const l = state.lang;
+  $('#todayLine').textContent = fullDate(now, l);
+  $('#topDate').textContent = shortDate(now, l);
 
   let greeting;
-  if (hour >= 5 && hour < 11) greeting = '오늘 아침, 어떤 <span class="mark">고민</span>이<br>마음에 있으신가요?';
+  if (l === 'en') {
+    if (hour >= 5 && hour < 11) greeting = 'This morning, what is on<br>your <span class="mark">mind</span>?';
+    else if (hour >= 11 && hour < 22) greeting = 'What <span class="mark">worry</span> are you<br>carrying today?';
+    else greeting = 'Before you sleep, what is<br>on your <span class="mark">mind</span>?';
+  } else if (hour >= 5 && hour < 11) greeting = '오늘 아침, 어떤 <span class="mark">고민</span>이<br>마음에 있으신가요?';
   else if (hour >= 11 && hour < 22) greeting = '오늘 어떤 <span class="mark">고민</span>을<br>안고 계신가요?';
   else greeting = '잠들기 전, 어떤 <span class="mark">고민</span>이<br>마음에 있으신가요?';
   $('#greeting').innerHTML = greeting;
@@ -603,19 +1115,22 @@ function iconSvg(name, vb = 24) {
 
 function renderMood() {
   const grid = $('#moodGrid');
+  if (!grid) return;
   grid.innerHTML = EMOTIONS.map(e => `
     <button type="button" class="mood" data-emotion="${e.id}" aria-pressed="false">
       <span class="m-icon">${iconSvg(e.icon)}</span>
-      <span>${e.label}</span>
+      <span>${escapeHtml(emotionLabel(e, state.lang))}</span>
     </button>`).join('');
-  grid.addEventListener('click', ev => {
-    const btn = ev.target.closest('.mood');
-    if (!btn) return;
-    const id = btn.dataset.emotion;
-    state.emotion = state.emotion === id ? null : id;
-    syncMood();
-    syncSaveBtn();
-  });
+  syncMood();
+}
+
+function onMoodClick(ev) {
+  const btn = ev.target.closest('.mood');
+  if (!btn) return;
+  const id = btn.dataset.emotion;
+  state.emotion = state.emotion === id ? null : id;
+  syncMood();
+  syncSaveBtn();
 }
 function syncMood() {
   $$('.mood').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.emotion === state.emotion)));
@@ -664,17 +1179,19 @@ function onSave() {
     btn.classList.remove('nudge');
     void btn.offsetWidth;
     btn.classList.add('nudge');
-    toast('아직 아무것도 적지 않으셨어요. 한 줄이면 충분해요.');
+    toast(ui('emptySave'));
     $('#diaryText').focus();
     return;
   }
 
   const built = compose(state.emotion, text, {
+    lang: state.lang,
     excludeSong: state.entries[0] && state.entries[0].song ? state.entries[0].song.id : null
   });
   const entry = {
     id: `e${Date.now()}${Math.floor(Math.random() * 1000)}`,
     createdAt: new Date().toISOString(),
+    lang: built.lang,
     emotionId: built.emotionId,
     emotionLabel: built.emotionLabel,
     text,
@@ -687,14 +1204,14 @@ function onSave() {
 
   state.entries.unshift(entry);
   const ok = saveEntries(state.entries);
-  if (!ok) toast('이 브라우저에는 저장이 막혀 있어요. 창을 닫으면 사라질 수 있어요.');
+  if (!ok) toast(ui('storageBlocked'));
 
   state.text = '';
   state.emotion = null;
   const ta = $('#diaryText');
   ta.value = '';
   ta.style.height = '';
-  $('#charCount').textContent = '0자';
+  updateCharCount();
   syncMood();
   syncSaveBtn();
 
@@ -709,17 +1226,19 @@ function onSave() {
 /* ─────────────────────────────────────────────
    찬양 링크
    ───────────────────────────────────────────── */
-function songUrl(song) {
+function songUrl(song, lang) {
   if (song && typeof song.youtubeUrl === 'string' && /^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/.test(song.youtubeUrl)) {
     return song.youtubeUrl;
   }
   // 예전에 저장해둔 기록(곡 주소가 없던 시절)은 유튜브 검색으로 이어줍니다.
-  const q = encodeURIComponent(`${(song && song.title) || ''} ${(song && song.artist) || ''} 찬양`.trim());
+  const tail = (lang || state.lang) === 'en' ? 'worship' : '찬양';
+  const q = encodeURIComponent(`${(song && song.title) || ''} ${(song && song.artist) || ''} ${tail}`.trim());
   return `https://www.youtube.com/results?search_query=${q}`;
 }
 
 function comfortMarkup(entry, opts = {}) {
-  const dateStr = fullDate(new Date(entry.createdAt));
+  const l = entry.lang === 'en' ? 'en' : 'ko';
+  const dateStr = fullDate(new Date(entry.createdAt), l);
   const topics = (entry.topics || []).map(t => `<span class="tag tag-ghost">#${escapeHtml(t)}</span>`).join('');
   const letterHtml = entry.letter.map(p => `<p>${escapeHtml(p)}</p>`).join('');
   const written = entry.text
@@ -730,9 +1249,9 @@ function comfortMarkup(entry, opts = {}) {
     <article class="comfort-card">
       <div class="card-tape" aria-hidden="true"></div>
       <header class="card-head">
-        <p class="card-eyebrow">${opts.fresh ? '오늘의 위로' : '그날의 위로'}</p>
+        <p class="card-eyebrow">${opts.fresh ? ui('cardToday', l) : ui('cardThen', l)}</p>
         <p class="card-date">${dateStr}</p>
-        <h2 class="card-title">당신의 고민에<br>건네는 위로</h2>
+        <h2 class="card-title">${ui('cardTitle', l)}</h2>
         <div class="card-tags">
           <span class="tag">${escapeHtml(entry.emotionLabel)}</span>
           ${topics}
@@ -745,79 +1264,83 @@ function comfortMarkup(entry, opts = {}) {
 
       <div class="letter">
         ${letterHtml}
-        <p class="letter-sign">— Still Water 드림</p>
+        <p class="letter-sign">${escapeHtml(ui('cardSign', l))}</p>
       </div>
 
       <section class="verse">
-        <p class="mini-label">오늘 곁에 두면 좋은 말씀</p>
+        <p class="mini-label">${escapeHtml(ui('cardVerse', l))}</p>
         <blockquote>${escapeHtml(entry.verse.text)}</blockquote>
         <cite>${escapeHtml(entry.verse.ref)}</cite>
       </section>
 
-      <a class="song" href="${escapeHtml(songUrl(entry.song))}" target="_blank" rel="noopener noreferrer"
+      <a class="song" href="${escapeHtml(songUrl(entry.song, l))}" target="_blank" rel="noopener noreferrer"
          data-song-id="${escapeHtml(entry.song.id)}"
-         aria-label="유튜브에서 ${escapeHtml(entry.song.title)} 듣기 (새 창)">
+         aria-label="${escapeHtml(fill(ui('songAria', l), { title: entry.song.title }))}">
         <span class="song-icon" aria-hidden="true">♪</span>
         <span class="song-body">
-          <span class="mini-label">함께 들으면 좋은 곡</span>
+          <span class="mini-label">${escapeHtml(ui('cardSong', l))}</span>
           <span class="song-title">${escapeHtml(entry.song.title)}<span>${escapeHtml(entry.song.artist)}</span></span>
           <span class="song-why">${escapeHtml(entry.song.why)}</span>
-          <span class="song-listen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.4v13.2L19 12z"/></svg>유튜브에서 듣기</span>
+          <span class="song-listen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.4v13.2L19 12z"/></svg>${escapeHtml(ui('cardListen', l))}</span>
         </span>
       </a>
 
       <button class="copy-btn" type="button" data-action="copy">
-        ${iconSvg('copy')} 문구 복사하기
+        ${iconSvg('copy')} ${escapeHtml(ui('cardCopy', l))}
       </button>
 
       <div class="card-sprig" aria-hidden="true">${iconSvg('sprig', 48)}</div>
     </article>
 
-    ${entry.crisis ? safetyMarkup() : ''}
+    ${entry.crisis ? safetyMarkup(l) : ''}
 
     <div class="connect">
-      <p class="connect-lead">혼자 안고 있기 버거운 고민이라면, 조금 나눠도 괜찮아요.</p>
+      <p class="connect-lead">${escapeHtml(ui('connectLead', l))}</p>
       <button class="connect-btn" type="button" data-connect="prayer">
         <span class="ci" aria-hidden="true">💌</span>
-        <span><b>이 고민, 조용히 기도·답장 받아보기</b><i>이름 밝히지 않아도 괜찮아요 · 함께 기도하고 짧게 답장드려요</i></span>
+        <span><b>${escapeHtml(ui('connectPrayerTitle', l))}</b><i>${escapeHtml(ui('connectPrayerDesc', l))}</i></span>
       </button>
       <button class="connect-btn talk" type="button" data-connect="talk">
         <span class="ci" aria-hidden="true">🌱</span>
-        <span><b>누군가와 조금 더 이야기 나누고 싶어요</b><i>익명으로 편하게 · 하고 싶은 이야기를 나눠요</i></span>
+        <span><b>${escapeHtml(ui('connectTalkTitle', l))}</b><i>${escapeHtml(ui('connectTalkDesc', l))}</i></span>
       </button>
-      <p class="privacy">${iconSvg('lock')} 적으신 고민은 이 기기에만 저장돼요.</p>
+      <p class="privacy">${iconSvg('lock')} ${escapeHtml(ui('privacy', l))}</p>
     </div>`;
 }
 
 function renderComfort(entry, opts = {}) {
   state.current = entry;
+  state.cardOpts = opts;
+  const l = entry.lang === 'en' ? 'en' : 'ko';
   $('#comfortBody').innerHTML = comfortMarkup(entry, opts);
   $('#savedPill').hidden = !opts.fresh;
-  $('#comfortBackLabel').textContent = state.fromJournal ? '내 기록으로' : '고민 쓰기로';
+  $('#savedPill').textContent = ui('savedPill', l);
+  $('#comfortBackLabel').textContent = state.fromJournal ? ui('backJournal', l) : ui('backWrite', l);
 }
 
 /* ─────────────────────────────────────────────
    복사
    ───────────────────────────────────────────── */
 function entryToText(entry) {
-  const dateStr = fullDate(new Date(entry.createdAt));
+  const l = entry.lang === 'en' ? 'en' : 'ko';
+  const dateStr = fullDate(new Date(entry.createdAt), l);
   const lines = [
-    `Still Water · 익명 고민 상담소`,
+    ui('summaryHead', l),
     `${dateStr}`,
     `${entry.emotionLabel}`,
     '',
     ...entry.letter,
     '',
-    '— Still Water 드림',
+    ui('cardSign', l),
     '',
-    `[오늘 곁에 두면 좋은 말씀]`,
+    ui('textVerse', l),
     entry.verse.text,
     `(${entry.verse.ref})`,
     '',
-    `[함께 들으면 좋은 곡]`,
+    ui('textSong', l),
     `${entry.song.title} — ${entry.song.artist}`,
     entry.song.why,
-    songUrl(entry.song)
+    songUrl(entry.song, l)
   ];
   return lines.join('\n');
 }
@@ -849,7 +1372,8 @@ async function copyText(text) {
 
 async function copyEntry(entry) {
   const ok = await copyText(entryToText(entry));
-  toast(ok ? '편지 전체를 복사했어요. 어디든 붙여넣어 보세요.' : '복사가 되지 않았어요. 길게 눌러 직접 선택해 주세요.');
+  const l = entry.lang === 'en' ? 'en' : 'ko';
+  toast(ok ? ui('copyDone', l) : ui('copyFail', l));
 }
 
 /* ─────────────────────────────────────────────
@@ -860,33 +1384,36 @@ function renderJournal() {
   const empty = $('#journalEmpty');
   const foot = $('#journalFoot');
   const lead = $('#journalLead');
+  const l = state.lang;
 
   if (!state.entries.length) {
     list.innerHTML = '';
     empty.hidden = false;
     foot.hidden = true;
-    lead.textContent = '아직 담아둔 고민이 없어요.';
+    lead.textContent = ui('journalEmpty', l);
     return;
   }
   empty.hidden = true;
   foot.hidden = false;
-  lead.textContent = `지금까지 ${state.entries.length}번, 고민을 놓아두셨어요.`;
+  let countText = fill(ui('journalCount', l), { n: state.entries.length });
+  if (l === 'en' && state.entries.length === 1) countText = 'One worry is resting here so far.';
+  lead.textContent = countText;
 
   list.innerHTML = state.entries.map(e => {
     const d = new Date(e.createdAt);
-    const mood = e.emotionLabel || '오늘의 마음';
+    const mood = e.emotionLabel || ui('journalNoWords', l);
     const body = e.text
       ? escapeHtml(e.text)
-      : '<span style="color:var(--muted)">글로 남기지 않은 마음</span>';
+      : `<span style="color:var(--muted)">${escapeHtml(ui('journalNoWords', l))}</span>`;
     return `
-      <div class="journal-item" role="button" tabindex="0" data-id="${e.id}" aria-label="${escapeHtml(fullDate(d))} 고민 열어보기">
+      <div class="journal-item" role="button" tabindex="0" data-id="${e.id}" aria-label="${escapeHtml(fill(ui('journalOpenAria', l), { date: fullDate(d, l) }))}">
         <div class="ji-top">
-          <span class="ji-date">${parts(d).m}월 ${parts(d).d}일 ${parts(d).w}</span>
+          <span class="ji-date">${escapeHtml(shortDate(d, l))}</span>
           <span class="ji-mood">${escapeHtml(mood)}</span>
         </div>
         <p class="ji-text">${body}</p>
         <p class="ji-verse">${escapeHtml(e.verse.ref)}</p>
-        <button class="ji-del" type="button" data-del="${e.id}" aria-label="이 기록 지우기">${iconSvg('trash')}</button>
+        <button class="ji-del" type="button" data-del="${e.id}" aria-label="${escapeHtml(ui('journalDeleteAria', l))}">${iconSvg('trash')}</button>
       </div>`;
   }).join('');
 
@@ -914,7 +1441,7 @@ function renderJournal() {
 function openEntry(id) {
   const entry = state.entries.find(e => e.id === id);
   if (!entry) {
-    toast('이 기록을 찾지 못했어요.');
+    toast(ui('entryMissing'));
     renderJournal();
     return;
   }
@@ -929,75 +1456,67 @@ function deleteEntry(id) {
   saveEntries(state.entries);
   renderJournal();
   closeSheet();
-  toast('기록을 지웠어요.');
+  toast(ui('deleted'));
 }
 
 /* ─────────────────────────────────────────────
    연결 시트
    ───────────────────────────────────────────── */
 function summaryOf(entry) {
-  const dateStr = fullDate(new Date(entry.createdAt));
+  const l = entry.lang === 'en' ? 'en' : 'ko';
+  const dateStr = fullDate(new Date(entry.createdAt), l);
   let body = entry.text.replace(/\s+/g, ' ').trim();
-  if (!body) body = '오늘은 따로 적지 않고, 마음만 담아두었어요.';
+  if (!body) body = ui('summaryEmptyText', l);
   if (body.length > 220) body = body.slice(0, 220) + '…';
   return [
-    '[Still Water · 익명 고민 상담소]',
+    ui('summaryHead', l),
     `${dateStr} · ${entry.emotionLabel}`,
     '',
-    '오늘 쓴 고민:',
+    ui('summaryWhat', l),
     `"${body}"`,
     '',
-    `받은 말씀: ${entry.verse.ref}`
+    fill(ui('summaryVerse', l), { ref: entry.verse.ref })
   ].join('\n');
 }
 
-const SHEETS = {
-  prayer: {
-    emoji: '💌',
-    cls: '',
-    title: '이 고민, 조용히 함께 기도할까요',
-    desc: '혼자 버거운 고민, 익명으로 편하게 이야기 나눌 수 있어요. 적어두신 고민을 보내주시면 조용히 함께 기도하고 짧은 답장을 드릴게요. 이름을 밝히지 않으셔도 괜찮아요. 보내고 나서 마음이 바뀌어도 전혀 문제되지 않아요.',
-    primary: '요약 복사하고 카톡 열기'
-  },
-  talk: {
-    emoji: '🌱',
-    cls: 'talk',
-    title: '조금 더 이야기해도 괜찮아요',
-    desc: '혼자 버거운 고민이면, 익명으로 편하게 이야기 나눌 수 있어요. 하나님에 대해 궁금한 점이든, 그냥 오늘 있었던 일이든 좋아요. 편한 속도로 이야기해요. 질문이 정리되지 않아도, 그냥 안부만 남기셔도 괜찮습니다.',
-    primary: '요약 복사하고 카톡 열기'
+function sheetConf(type, lang) {
+  if (type === 'talk') {
+    return { emoji: '🌱', cls: 'talk', title: ui('sheetTalkTitle', lang), desc: ui('sheetTalkDesc', lang), primary: ui('sheetPrimary', lang) };
   }
-};
+  return { emoji: '💌', cls: '', title: ui('sheetPrayerTitle', lang), desc: ui('sheetPrayerDesc', lang), primary: ui('sheetPrimary', lang) };
+}
 
 function openSheet(type, entry) {
   state.sheet = { type, entry };
   state.restoreFocus = document.activeElement;
-  const conf = SHEETS[type];
+  const conf = sheetConf(type, state.lang);
   if (!conf) return;
+  const l = state.lang;
 
   const host = CONTACT_URL
-    ? `<p class="sheet-note">카카오톡 오픈채팅방으로 이어져요. 창이 열리지 않으면 <a href="${CONTACT_URL}" target="_blank" rel="noopener" data-kakao-direct>여기서 직접 열 수 있어요</a>.</p>`
-    : `<p class="sheet-note">연결 창구 주소가 아직 설정되지 않았어요. 요약은 복사되니, 주소를 받으신 뒤 붙여넣어 주세요.</p>`;
+    ? `<p class="sheet-note">${fill(ui('sheetHost', l), { url: CONTACT_URL })}</p>`
+    : `<p class="sheet-note">${ui('sheetHostNone', l)}</p>`;
 
   $('#sheetBody').innerHTML = `
-    <button class="sheet-close" type="button" data-sheet-close aria-label="닫기">✕</button>
+    <button class="sheet-close" type="button" data-sheet-close aria-label="${escapeHtml(ui('sheetClose', l))}">✕</button>
     <div class="sheet-emoji ${conf.cls}" aria-hidden="true">${conf.emoji}</div>
-    <h3 id="sheetTitle">${conf.title}</h3>
-    <p class="sheet-desc">${conf.desc}</p>
-    <p class="sheet-preview-label">이렇게 보내게 돼요</p>
+    <h3 id="sheetTitle">${escapeHtml(conf.title)}</h3>
+    <p class="sheet-desc">${escapeHtml(conf.desc)}</p>
+    <p class="sheet-preview-label">${escapeHtml(ui('sheetPreviewLabel', l))}</p>
     <div class="sheet-preview">${escapeHtml(summaryOf(entry))}</div>
     <div class="sheet-guide">
-      <p class="sheet-guide-title">오픈카톡방이 열리면, 아래 중 <b>하나만</b> 골라 먼저 보내주셔도 좋아요</p>
+      <p class="sheet-guide-title">${ui('sheetGuideTitle', l)}</p>
       <ul class="sheet-guide-list">
-        <li><span class="num" aria-hidden="true">①</span>그냥 들어주기</li>
-        <li><span class="num" aria-hidden="true">②</span>기도 부탁</li>
-        <li><span class="num" aria-hidden="true">③</span>신앙이 궁금해요</li>
+        <li><span class="num" aria-hidden="true">①</span>${escapeHtml(ui('sheetGuide1', l))}</li>
+        <li><span class="num" aria-hidden="true">②</span>${escapeHtml(ui('sheetGuide2', l))}</li>
+        <li><span class="num" aria-hidden="true">③</span>${escapeHtml(ui('sheetGuide3', l))}</li>
       </ul>
     </div>
     <div class="sheet-actions">
-      <button class="sheet-primary" type="button" data-send="${type}">${conf.primary}</button>
-      <button class="sheet-secondary" type="button" data-sheet-close>지금은 그냥 마음만 담아둘게요</button>
+      <button class="sheet-primary" type="button" data-send="${type}">${escapeHtml(conf.primary)}</button>
+      <button class="sheet-secondary" type="button" data-sheet-close>${escapeHtml(ui('sheetSecondary', l))}</button>
     </div>
-    <p class="sheet-note">적으신 고민은 이 기기에만 저장돼요. 복사된 요약은 직접 붙여넣기 전까지 어디에도 전송되지 않아요.</p>
+    <p class="sheet-note">${escapeHtml(ui('sheetNote', l))}</p>
     ${host}
   `;
   $('#sheetBackdrop').hidden = false;
@@ -1038,9 +1557,9 @@ async function sendSummary(type) {
   const ok = await copyText(summary);
   closeSheet();
 
-  if (ok && win) toast('고민 요약을 복사했어요. 열린 창에 붙여넣어 주세요.');
-  else if (ok && !win) toast('고민 요약을 복사했어요. 오픈채팅방을 열어 붙여넣어 주세요.');
-  else if (!ok) toast('복사가 되지 않았어요. 안내 창에서 직접 선택해 주세요.');
+  if (ok && win) toast(ui('connectCopiedWindow'));
+  else if (ok && !win) toast(ui('connectCopiedNoWindow'));
+  else if (!ok) toast(ui('connectCopyFail'));
 }
 
 /* ─────────────────────────────────────────────
@@ -1050,13 +1569,15 @@ function openConfirm(id) {
   state.restoreFocus = document.activeElement;
   const entry = state.entries.find(e => e.id === id);
   state.sheet = { type: 'confirm', entry };
+  const l = state.lang;
+  const when = entry ? fullDate(new Date(entry.createdAt), l) : '';
   $('#sheetBody').innerHTML = `
-    <button class="sheet-close" type="button" data-sheet-close aria-label="닫기">✕</button>
-    <h3 id="sheetTitle" style="margin-top:6px">이 기록을 지울까요</h3>
-    <p class="confirm-text">${entry ? escapeHtml(fullDate(new Date(entry.createdAt))) : ''}에 담아둔 고민이 완전히 지워져요. 되돌릴 수 없어요.</p>
+    <button class="sheet-close" type="button" data-sheet-close aria-label="${escapeHtml(ui('sheetClose', l))}">✕</button>
+    <h3 id="sheetTitle" style="margin-top:6px">${escapeHtml(ui('confirmTitle', l))}</h3>
+    <p class="confirm-text">${escapeHtml(fill(ui('confirmBody', l), { date: when }))}</p>
     <div class="confirm-row">
-      <button class="ghost-btn" type="button" data-sheet-close>그대로 둘게요</button>
-      <button class="danger-btn" type="button" data-confirm-del="${id}">지우기</button>
+      <button class="ghost-btn" type="button" data-sheet-close>${escapeHtml(ui('confirmCancel', l))}</button>
+      <button class="danger-btn" type="button" data-confirm-del="${id}">${escapeHtml(ui('confirmDelete', l))}</button>
     </div>
   `;
   $('#sheetBackdrop').hidden = false;
@@ -1093,11 +1614,20 @@ function escapeHtml(str) {
 /* ─────────────────────────────────────────────
    이벤트 연결
    ───────────────────────────────────────────── */
+function updateCharCount() {
+  const el = $('#charCount');
+  if (!el) return;
+  const ta = $('#diaryText');
+  const n = ((ta && ta.value) || '').trim().length;
+  if (state.lang === 'en') el.textContent = n === 1 ? '1 character' : `${n} characters`;
+  else el.textContent = `${n}자`;
+}
+
 function wire() {
   const ta = $('#diaryText');
   ta.addEventListener('input', () => {
     state.text = ta.value;
-    $('#charCount').textContent = `${ta.value.trim().length}자`;
+    updateCharCount();
     syncSaveBtn();
     ta.style.height = 'auto';
     ta.style.height = Math.min(ta.scrollHeight + 2, 460) + 'px';
@@ -1110,15 +1640,27 @@ function wire() {
 
   $('#clearBtn').addEventListener('click', () => {
     if (!ta.value && !state.emotion) return;
-    if (ta.value && !confirm('적으신 글을 지울까요?')) return;
+    if (ta.value && !confirm(ui('clearConfirm'))) return;
     ta.value = '';
     state.text = '';
     state.emotion = null;
-    $('#charCount').textContent = '0자';
+    updateCharCount();
     ta.style.height = '';
     syncMood();
     syncSaveBtn();
     ta.focus();
+  });
+
+  const moodGrid = $('#moodGrid');
+  if (moodGrid) moodGrid.addEventListener('click', onMoodClick);
+
+  $$('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const next = btn.dataset.lang === 'en' ? 'en' : 'ko';
+      if (next === state.lang) return;
+      saveLang(next);
+      applyLang(next);
+    });
   });
 
   $('#comfortBack').addEventListener('click', () => {
@@ -1174,14 +1716,61 @@ function wire() {
 }
 
 /* ─────────────────────────────────────────────
+   언어 전환 (한국어 · English)
+   ─────────────────────────────────────────────
+   1) 저장된 선택(localStorage) → 2) 주소의 ?lang=en / ?lang=ko → 3) 기본 한국어.
+   화면 문구·감정 이름·날짜가 함께 바뀝니다. 이미 담아둔 편지는 그때의 언어로 남습니다. */
+const LANG_KEY = 'stillwater.lang.v1';
+
+function readLang() {
+  let search = '';
+  try { search = (window.location && window.location.search) || ''; } catch (err) { search = ''; }
+  const m = /[?&]lang=(ko|en)(?:&|$)/.exec(search);
+  if (m) { saveLang(m[1]); return m[1]; }
+  try {
+    const saved = localStorage.getItem(LANG_KEY);
+    if (saved === 'en' || saved === 'ko') return saved;
+  } catch (err) { /* 저장소를 못 쓰면 기본 한국어 */ }
+  return 'ko';
+}
+
+function saveLang(lang) {
+  try { localStorage.setItem(LANG_KEY, lang === 'en' ? 'en' : 'ko'); } catch (err) { }
+}
+
+function applyLang(lang) {
+  state.lang = lang === 'en' ? 'en' : 'ko';
+  const l = state.lang;
+  document.documentElement.lang = l;
+  document.title = l === 'en' ? 'Still Water · Anonymous Counseling' : 'Still Water · 익명 고민 상담소';
+
+  $$('.lang-btn').forEach(b => {
+    const on = b.dataset.lang === l;
+    b.classList.toggle('is-active', on);
+    b.setAttribute('aria-pressed', String(on));
+  });
+  $$('[data-i18n]').forEach(el => { el.textContent = ui(el.dataset.i18n, l); });
+  $$('[data-i18n-html]').forEach(el => { el.innerHTML = ui(el.dataset.i18nHtml, l); });
+  $$('[data-i18n-placeholder]').forEach(el => { el.placeholder = ui(el.dataset.i18nPlaceholder, l); });
+  $$('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', ui(el.dataset.i18nAria, l)); });
+
+  paintHeader();
+  renderMood();
+  renderJournal();
+  updateCharCount();
+  syncSaveBtn();
+  if (state.current && state.view === 'comfort') renderComfort(state.current, state.cardOpts || {});
+  if (!$('#sheetBackdrop').hidden) closeSheet();
+}
+
+/* ─────────────────────────────────────────────
    시작
    ───────────────────────────────────────────── */
 function init() {
-  paintHeader();
-  renderMood();
-  wire();
   state.entries = loadEntries();
-  renderJournal();
+  state.lang = readLang();
+  wire();
+  applyLang(state.lang);
   syncSaveBtn();
   show('write');
 

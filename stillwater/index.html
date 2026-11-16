@@ -100,10 +100,14 @@
 
 <div class="app">
   <header class="topbar">
-    <button class="brand" type="button" data-tab="write" aria-label="고민 쓰기로 이동">
+    <button class="brand" type="button" data-tab="write" aria-label="고민 쓰기로 이동" data-i18n-aria="brandAria">
       <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart"/></svg></span>
-      <span class="brand-text"><b>Still Water</b><i>익명 고민 상담소</i></span>
+      <span class="brand-text"><b>Still Water</b><i data-i18n="brandSub">익명 고민 상담소</i></span>
     </button>
+    <div class="lang-switch" role="group" aria-label="언어 선택" data-i18n-aria="langAria">
+      <button class="lang-btn is-active" type="button" data-lang="ko" lang="ko" aria-pressed="true">KR</button>
+      <button class="lang-btn" type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+    </div>
     <span class="topbar-date" id="topDate">11월 16일 월요일</span>
   </header>
 
@@ -113,38 +117,39 @@
       <div class="write-head">
         <p class="eyebrow" id="todayLine">2026년 11월 16일 월요일</p>
         <h1 class="display" id="greeting">오늘 어떤 <span class="mark">고민</span>을<br>안고 계신가요?</h1>
-        <p class="lead">말하기 힘든 고민도 괜찮아요. 아무에게도 못 한 이야기를 한 줄만 적어보세요.</p>
+        <p class="lead" data-i18n="lead">말하기 힘든 고민도 괜찮아요. 아무에게도 못 한 이야기를 한 줄만 적어보세요.</p>
       </div>
 
       <section class="block">
         <div class="block-head">
-          <h2>지금 마음</h2>
-          <span>가까운 것 하나만 골라도 좋아요</span>
+          <h2 data-i18n="moodTitle">지금 마음</h2>
+          <span data-i18n="moodHint">가까운 것 하나만 골라도 좋아요</span>
         </div>
-        <div class="mood-grid" id="moodGrid" role="group" aria-label="오늘의 마음 선택"></div>
+        <div class="mood-grid" id="moodGrid" role="group" aria-label="오늘의 마음 선택" data-i18n-aria="moodAria"></div>
       </section>
 
       <section class="block">
         <div class="block-head">
-          <h2>고민 적어보기</h2>
+          <h2 data-i18n="writeTitle">고민 적어보기</h2>
           <span id="charCount">0자</span>
         </div>
         <div class="paper-card">
           <textarea id="diaryText" rows="7" maxlength="2000"
             placeholder="오늘 어떤 고민이 있으신가요? 아무에게도 못 한 이야기도 괜찮아요."
-            aria-label="오늘의 고민 적기"></textarea>
+            data-i18n-placeholder="taPlaceholder"
+            aria-label="오늘의 고민 적기" data-i18n-aria="taAria"></textarea>
           <div class="paper-foot">
-            <span class="lock-note"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lock"/></svg>이 글은 이 기기에만 저장돼요</span>
-            <button class="mini-ghost" type="button" id="clearBtn">지우기</button>
+            <span class="lock-note"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lock"/></svg><span data-i18n="lockNote">이 글은 이 기기에만 저장돼요</span></span>
+            <button class="mini-ghost" type="button" id="clearBtn" data-i18n="clearBtn">지우기</button>
           </div>
         </div>
       </section>
 
       <button class="primary-btn" type="button" id="saveBtn">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart"/></svg>
-        위로 편지 받아보기
+        <span data-i18n="saveBtn">위로 편지 받아보기</span>
       </button>
-      <p class="under-note">담아두면, 이 고민에 맞춘 위로 편지와 말씀을 조용히 건네드릴게요.<br>이름도 연락처도 묻지 않아요.</p>
+      <p class="under-note" data-i18n-html="underNote">담아두면, 이 고민에 맞춘 위로 편지와 말씀을 조용히 건네드릴게요.<br>이름도 연락처도 묻지 않아요.</p>
     </section>
 
     <!-- ───────── 위로 선물 카드 ───────── -->
@@ -162,28 +167,28 @@
     <!-- ───────── 내 기록 ───────── -->
     <section class="view" id="view-journal" hidden>
       <div class="write-head">
-        <p class="eyebrow">내 기록</p>
-        <h1 class="display display-sm">담아둔 고민들</h1>
+        <p class="eyebrow" data-i18n="journalEyebrow">내 기록</p>
+        <h1 class="display display-sm" data-i18n="journalTitle">담아둔 고민들</h1>
         <p class="lead" id="journalLead">아직 담아둔 고민이 없어요.</p>
       </div>
       <div id="journalList" class="journal-list"></div>
       <div class="journal-empty" id="journalEmpty" hidden>
         <div class="empty-sprig"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-sprig"/></svg></div>
-        <p>오늘의 고민을 한 줄 적어보는 건<br>어떨까요?</p>
-        <button class="ghost-btn" type="button" data-tab="write">고민 쓰러 가기</button>
+        <p data-i18n-html="emptyMsg">오늘의 고민을 한 줄 적어보는 건<br>어떨까요?</p>
+        <button class="ghost-btn" type="button" data-tab="write" data-i18n="emptyBtn">고민 쓰러 가기</button>
       </div>
-      <p class="journal-foot" id="journalFoot" hidden>적으신 고민은 이 기기(브라우저)에만 저장돼요.<br>브라우저 기록을 지우면 함께 사라질 수 있어요.</p>
+      <p class="journal-foot" id="journalFoot" hidden data-i18n-html="journalFoot">적으신 고민은 이 기기(브라우저)에만 저장돼요.<br>브라우저 기록을 지우면 함께 사라질 수 있어요.</p>
     </section>
   </main>
 
-  <nav class="tabbar" aria-label="주요 화면">
+  <nav class="tabbar" aria-label="주요 화면" data-i18n-aria="tabAria">
     <button type="button" class="tab is-active" data-tab="write">
       <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pencil"/></svg>
-      <span>고민 쓰기</span>
+      <span data-i18n="tabWrite">고민 쓰기</span>
     </button>
     <button type="button" class="tab" data-tab="journal">
       <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>
-      <span>내 기록</span>
+      <span data-i18n="tabJournal">내 기록</span>
     </button>
   </nav>
 </div>

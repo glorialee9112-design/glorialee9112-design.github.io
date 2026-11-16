@@ -2,7 +2,7 @@
    - 문서(navigation)와 앱 파일(html/css/js)은 네트워크 우선 → 고단 뒤 수정한 내용이 바로 반영됩니다.
    - 네트워크가 없으면 캐시로 열립니다.
    - 경로는 모두 상대경로(./)라 GitHub Pages 하위 경로(/stillwater/)에서도 그대로 동작합니다. */
-const CACHE = 'stillwater-v1';
+const CACHE = 'stillwater-v2';
 const SHELL = [
   './',
   'index.html',
