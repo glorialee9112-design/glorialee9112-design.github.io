@@ -1,5 +1,5 @@
 /* ============================================================
-   Restore · 익명 고민 상담소  (app.js)
+   Still Water · 익명 고민 상담소  (app.js)
    ------------------------------------------------------------
    ★ 연결 창구(CONTACT_URL) ★
    아래 한 줄만 바꾸면 연결 버튼이 이동하는 곳이 바뀝니다.
@@ -721,7 +721,7 @@ function comfortMarkup(entry, opts = {}) {
 
       <div class="letter">
         ${letterHtml}
-        <p class="letter-sign">— Restore 드림</p>
+        <p class="letter-sign">— Still Water 드림</p>
       </div>
 
       <section class="verse">
@@ -777,13 +777,13 @@ function renderComfort(entry, opts = {}) {
 function entryToText(entry) {
   const dateStr = fullDate(new Date(entry.createdAt));
   const lines = [
-    `Restore · 익명 고민 상담소`,
+    `Still Water · 익명 고민 상담소`,
     `${dateStr}`,
     `${entry.emotionLabel}`,
     '',
     ...entry.letter,
     '',
-    '— Restore 드림',
+    '— Still Water 드림',
     '',
     `[오늘 곁에 두면 좋은 말씀]`,
     entry.verse.text,
@@ -916,7 +916,7 @@ function summaryOf(entry) {
   if (!body) body = '오늘은 따로 적지 않고, 마음만 담아두었어요.';
   if (body.length > 220) body = body.slice(0, 220) + '…';
   return [
-    '[Restore · 익명 고민 상담소]',
+    '[Still Water · 익명 고민 상담소]',
     `${dateStr} · ${entry.emotionLabel}`,
     '',
     '오늘 쓴 고민:',
