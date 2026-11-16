@@ -3,15 +3,14 @@
    ------------------------------------------------------------
    ★ 연결 창구(CONTACT_URL) ★
    아래 한 줄만 바꾸면 연결 버튼이 이동하는 곳이 바뀝니다.
-     · 지금 값          : 카카오톡 채널 'https://pf.kakao.com/_CxlPnn' (기존 채널 유지 중)
-     · 전도 전용 오픈카톡: 'https://open.kakao.com/o/XXXXXXXX'
-   ▶ 전도 전용 오픈카톡 링크가 정해지면, 아래 CONTACT_URL 한 줄만 그 주소로
-     교체하면 됩니다. (아직 링크가 없어 기존 카카오톡 채널 주소를 그대로 두었습니다.)
+     · 지금 값          : 전도 전용 1:1 오픈채팅방 'https://open.kakao.com/o/sfzSIjXi'
+   ▶ 오픈채팅방 주소가 바뀌면, 아래 CONTACT_URL 한 줄만 그 주소로
+     교체하면 됩니다. (주소를 비워두면 '연결 준비 중'만 보이고, 복사 기능은 그대로 동작합니다.)
    (주소를 비워두면 '연결 준비 중' 안내만 보이고, 복사 기능은 그대로 동작합니다.)
    ============================================================ */
 
-// ↓↓↓ 전도 전용 오픈카톡 URL 교체 위치 (이 한 줄만 바꾸면 됩니다) ↓↓↓
-const CONTACT_URL = 'https://pf.kakao.com/_CxlPnn';
+// ↓↓↓ 전도 전용 오픈채팅방 URL ↓↓↓
+const CONTACT_URL = 'https://open.kakao.com/o/sfzSIjXi';
 
 // 저장 키는 1차 시안과 그대로 맞춰 두었습니다. (이미 적어둔 기록이 사라지지 않도록)
 const STORE_KEY = 'mahaneumkan.entries.v1';
@@ -40,22 +39,96 @@ const VERSES = {
 };
 
 /* ─────────────────────────────────────────────
-   곡 추천
+   찬양 추천 (전곡 찬양 / 찬송가)
+   ─────────────────────────────────────────────
+   youtubeUrl 은 실제로 열리는 영상만 넣었습니다. (원곡자·공식 채널 또는
+   조회수가 높은 찬양팀 영상) 곡을 추가할 때도 주소가 살아 있는지 먼저 확인하세요.
    ───────────────────────────────────────────── */
 const SONGS = {
-  s1:  { title: '주 은혜임을', artist: '손경민', why: '지친 어깨를 천천히 내려놓게 되는 잔잔한 곡이에요.' },
-  s2:  { title: '은혜 아니면', artist: '손경민', why: '설명이 필요 없는 가사라, 생각을 잠시 멈추고 듣기 좋아요.' },
-  s3:  { title: '내 영혼이 은총 입어', artist: '찬송가 405장', why: '바이올린 연주로 들으면 마음이 조금 가라앉아요.' },
-  s4:  { title: '주와 같이 길 가는 것', artist: '찬송가 430장', why: '혼자 걷는 길이 아니라는 말이 담긴 찬송이에요.' },
-  s5:  { title: '오 신실하신 주', artist: '찬송가 393장', why: '아침마다 새로워지는 은혜를 노래한 곡이에요.' },
-  s6:  { title: '지금까지 지내온 것', artist: '찬송가 301장', why: '지나온 날을 천천히 돌아보며 듣기 좋아요.' },
-  s7:  { title: '나 같은 죄인 살리신', artist: '찬송가 305장', why: '가장 낮은 자리에서도 불릴 수 있는 노래예요.' },
-  s8:  { title: 'It Is Well With My Soul', artist: 'Horatio Spafford', why: '큰 상처를 지나온 사람이 쓴 노래라, 말없이 들을 수 있어요.' },
-  s9:  { title: '주 사랑이 나를 숨쉬게 해', artist: '마커스워십', why: '혼자인 것 같은 저녁에 작게 틀어두기 좋아요.' },
-  s10: { title: '선한 능력으로', artist: '마커스워십', why: '힘을 내라는 말 대신, 조용히 기대게 되는 곡이에요.' },
-  s11: { title: '주님의 시간에', artist: '마커스워십', why: '조급한 마음을 잠시 내려놓게 하는 노래예요.' },
-  s12: { title: '모든 상황 속에서', artist: '마커스워십', why: '감사한 날엔 작게 흥얼거리며 듣기 좋아요.' },
-  s13: { title: '예수 사랑하심은', artist: '어린이 찬송', why: '상처 입은 마음을 가장 단순한 문장으로 안아주는 노래예요.' }
+  /* 지침·번아웃 */
+  t1: { title: '주 은혜임을', artist: '손경민', why: '내가 잘해서가 아니라 은혜로 여기 있다는 말이, 힘을 빼게 해요.', youtubeUrl: 'https://www.youtube.com/watch?v=7kuBu5Qa3PA' },
+  t2: { title: '나의 한숨을 바꾸셨네', artist: '마커스워십', why: '한숨이 많았던 마음을 노래가 먼저 알아주는 것 같아요.', youtubeUrl: 'https://www.youtube.com/watch?v=H79FL5F4Mak' },
+  t3: { title: '지금까지 지내온 것', artist: '찬송가 301장', why: '지나온 날을 천천히 돌아보며 듣기 좋아요.', youtubeUrl: 'https://www.youtube.com/watch?v=YHIpJDIjEOU' },
+  t4: { title: '내 영혼이 은총 입어', artist: '찬송가 438장', why: '무거운 마음을 잠시 내려놓게 하는 오래된 찬송이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=jLuhZ5o_yUM' },
+  t5: { title: '내게 강 같은 평화', artist: '마커스워십', why: '강물처럼 잔잔한 후렴이 마음을 천천히 식혀줘요.', youtubeUrl: 'https://www.youtube.com/watch?v=kh87d5UPggE' },
+
+  /* 불안·걱정 */
+  a1: { title: '은혜 아니면', artist: '손경민', why: '설명이 필요 없는 가사라, 생각을 잠시 멈추고 듣기 좋아요.', youtubeUrl: 'https://www.youtube.com/watch?v=nmafBfCphMA' },
+  a2: { title: '나의 영혼이 잠잠히', artist: '송정미', why: '생각이 많아지는 밤에, 숨을 고르게 하는 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=9P10OV1EXkQ' },
+  a3: { title: '아무것도 두려워 말라', artist: '마커스워십', why: '두려움이 클수록 천천히 들으면 좋은 노래예요.', youtubeUrl: 'https://www.youtube.com/watch?v=S0IsVcwuyrc' },
+  a4: { title: 'It Is Well With My Soul', artist: 'Horatio Spafford', why: '큰 상처를 지나온 사람이 쓴 노래라, 말없이 들을 수 있어요.', youtubeUrl: 'https://www.youtube.com/watch?v=Eg5O2y1UXw4' },
+  a5: { title: '너 두려워 말라', artist: '팀룩워십', why: '불안한 마음을 시편 말씀으로 안아주는 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=mfre6TzL2Y8' },
+
+  /* 외로움 */
+  l1: { title: '주와 같이 길 가는 것', artist: '찬송가 430장', why: '혼자 걷는 길이 아니라는 말이 담긴 찬송이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=L3yTtn11FM0' },
+  l2: { title: '주 사랑이 나를 숨쉬게 해', artist: '마커스워십', why: '혼자인 것 같은 저녁에 작게 틀어두기 좋아요.', youtubeUrl: 'https://www.youtube.com/watch?v=CkuqnIx11L8' },
+  l3: { title: '주 나와 함께 하시니', artist: 'WELOVE', why: '시편 23편이 그대로 노래가 되어, 빈방에서도 곁에 누가 있는 것 같아요.', youtubeUrl: 'https://www.youtube.com/watch?v=5X4jDVpL0c4' },
+  l4: { title: '우리 함께 기도해', artist: '마커스워십', why: '누군가와 함께 있다는 마음이 들게 하는 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=Hgai34-0f8o' },
+  l5: { title: '내 주를 가까이 하게 함은', artist: '찬송가 338장', why: '조용히 곁에 있는 느낌을 주는 오래된 찬송이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=9FNMj1rPU2c' },
+
+  /* 상처·서운함 */
+  h1: { title: '나 같은 죄인 살리신', artist: '찬송가 305장', why: '가장 낮은 자리에서도 불릴 수 있는 노래예요.', youtubeUrl: 'https://www.youtube.com/watch?v=SfUoRQy-LH4' },
+  h2: { title: '예수 사랑하심은', artist: '찬송가 563장', why: '상처 입은 마음을 가장 단순한 문장으로 안아주는 노래예요.', youtubeUrl: 'https://www.youtube.com/watch?v=3XQ8NlJOBr4' },
+  h3: { title: '그 사랑', artist: '마커스워십', why: '받은 사랑을 다시 세어보게 되는 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=5TroLBvlyp4' },
+  h4: { title: '당신은 사랑받기 위해 태어난 사람', artist: '러브', why: '그 말이 오늘은 당신에게도 그대로 들리기를 바라요.', youtubeUrl: 'https://www.youtube.com/watch?v=v7QWV8sv66M' },
+  h5: { title: '그 사랑 얼마나', artist: '박지현', why: '서운한 마음이 조금씩 풀어지는, 다정한 가사의 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=lQHl6wXVQtY' },
+
+  /* 막막함 */
+  k1: { title: '주님의 시간에', artist: '마커스워십', why: '조급한 마음을 잠시 내려놓게 하는 노래예요.', youtubeUrl: 'https://www.youtube.com/watch?v=PJ_CLfu3GjI' },
+  k2: { title: '광야를 지나며', artist: '마커스워십', why: '지금이 광야 같아도 지나가는 길이라고 말해주는 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=OrU7QsoOvMw' },
+  k3: { title: '모든 상황 속에서', artist: '마커스워십', why: '어떤 형편에서도 감사로 돌아서게 하는 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=Ipa_vptcy7o' },
+  k4: { title: '선한 능력으로', artist: '마커스워십', why: '힘을 내라는 말 대신, 조용히 기대게 되는 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=vG_E39ZYAjs' },
+  k5: { title: '길을 만드시는 주', artist: '마커스워십', why: '막힌 자리에서도 길을 내시는 분을 노래한 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=W9JMKBH6HQU' },
+
+  /* 감사·평안 */
+  g1: { title: '오 신실하신 주', artist: '찬송가 393장', why: '아침마다 새로워지는 은혜를 노래한 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=IkaGz2r8xi8' },
+  g2: { title: '감사 위에 감사', artist: '마커스워십', why: '감사한 마음이 더 크게 번지게 하는 노래예요.', youtubeUrl: 'https://www.youtube.com/watch?v=KWxH0LZMbT0' },
+  g3: { title: '감사함으로', artist: '마커스워십', why: '평범한 하루도 감사로 바라보게 하는 곡이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=ExeiRWu-4xc' },
+  g4: { title: '날 구원하신 주 감사', artist: '마커스워십', why: '지나온 날을 돌아보며 감사하게 되는 노래예요.', youtubeUrl: 'https://www.youtube.com/watch?v=1hUfF_634_k' },
+  g5: { title: '주 하나님 지으신 모든 세계', artist: '찬송가 79장', why: '창밖을 한 번 보게 되는, 넓은 마음의 찬송이에요.', youtubeUrl: 'https://www.youtube.com/watch?v=IhJHSXc3iDg' }
+};
+
+/* 고민 상황(주제)마다 다른 찬양이 나오도록 감정별 주제 → 곡 묶음
+   (키: '감정id/주제라벨', 값: 그 상황에 어울리는 곡 id 2~3개)
+   여기에 없는 주제는 그 감정의 기본 곡 묶음(emotion.songs)에서 고릅니다. */
+const TOPIC_SONGS = {
+  'tired/회사':        ['t3', 't2'],
+  'tired/공부':        ['t2', 't1'],
+  'tired/돌봄':        ['t1', 't5'],
+  'tired/가르치는 일': ['t2', 't4'],
+  'tired/잠':          ['t5', 't4'],
+  'tired/생활':        ['t3', 't1'],
+
+  'anxious/기다림': ['a2', 'a1'],
+  'anxious/건강':   ['a4', 'a5'],
+  'anxious/생활':   ['a1', 'a3'],
+  'anxious/잠':     ['a2', 'a4'],
+  'anxious/결정':   ['a3', 'a1'],
+  'anxious/가족':   ['a5', 'a2'],
+
+  'lonely/관계': ['l4', 'l3'],
+  'lonely/혼자': ['l2', 'l3'],
+  'lonely/가족': ['l1', 'l5'],
+  'lonely/이별': ['l2', 'l1'],
+  'lonely/신앙': ['l5', 'l4'],
+
+  'hurt/말':        ['h2', 'h4'],
+  'hurt/가까운 사이': ['h3', 'h5'],
+  'hurt/믿음':      ['h1', 'h3'],
+  'hurt/이별':      ['h5', 'h3'],
+  'hurt/어린 날':   ['h4', 'h2'],
+
+  'stuck/진로': ['k1', 'k5'],
+  'stuck/공부': ['k2', 'k1'],
+  'stuck/일':   ['k3', 'k5'],
+  'stuck/신앙': ['k4', 'k1'],
+  'stuck/결정': ['k1', 'k3'],
+
+  'grateful/감사': ['g2', 'g3'],
+  'grateful/사람': ['g4', 'g2'],
+  'grateful/신앙': ['g1', 'g5'],
+  'grateful/수고': ['g3', 'g4'],
+  'grateful/쉼':   ['g1', 'g5']
 };
 
 /* ─────────────────────────────────────────────
@@ -80,7 +153,7 @@ const EMOTIONS = [
       ]
     ],
     verses: ['mt1128', 'isa4031'],
-    songs: ['s1', 's3'],
+    songs: ['t1', 't2', 't3', 't4', 't5'],
     topics: [
       { keys: ['회사', '출근', '야근', '업무', '상사', '팀장', '회의', '직장', '일터'], label: '회사',
         line: '회사에서의 하루가 유난히 길고 무거우셨겠어요. 집에 돌아온 뒤에도 그 공기가 옷에 남아 있는 것 같지요.' },
@@ -113,7 +186,7 @@ const EMOTIONS = [
       ]
     ],
     verses: ['phil46', 'pet57'],
-    songs: ['s2', 's8'],
+    songs: ['a1', 'a2', 'a3', 'a4', 'a5'],
     topics: [
       { keys: ['시험', '면접', '결과', '발표', '합격', '불합격', '입시'], label: '기다림',
         line: '결과를 기다리는 시간만큼 마음이 조여오는 때가 있지요. 그 시간을 견디는 것도 큰일이에요.' },
@@ -146,7 +219,7 @@ const EMOTIONS = [
       ]
     ],
     verses: ['ps1399', 'isa432'],
-    songs: ['s4', 's9'],
+    songs: ['l1', 'l2', 'l3', 'l4', 'l5'],
     topics: [
       { keys: ['친구', '연락', '카톡', '약속', '모임'], label: '관계',
         line: '연락이 오지 않는 시간이 유난히 길게 느껴진 날이었나 봐요. 기다리는 마음이 참 조용하지요.' },
@@ -177,7 +250,7 @@ const EMOTIONS = [
       ]
     ],
     verses: ['ps3418', 'ps1473'],
-    songs: ['s7', 's13'],
+    songs: ['h1', 'h2', 'h3', 'h4', 'h5'],
     topics: [
       { keys: ['말', '상처', '무시', '욕', '비난', '지적', '모욕'], label: '말',
         line: '그 말을 듣고 한참이 지나서도 마음에 남아 있을 때가 있어요. 말은 원래 그렇게 오래 살아남아요.' },
@@ -208,7 +281,7 @@ const EMOTIONS = [
       ]
     ],
     verses: ['prov356', 'isa4319'],
-    songs: ['s11', 's10'],
+    songs: ['k1', 'k2', 'k3', 'k4', 'k5'],
     topics: [
       { keys: ['진로', '취업', '미래', '인생', '뭘해야', '무엇을해야', '방향'], label: '진로',
         line: '앞이 잘 보이지 않을 때는 한 걸음도 무겁게 느껴지지요. 지금은 서 있는 것만으로도 괜찮아요.' },
@@ -239,7 +312,7 @@ const EMOTIONS = [
       ]
     ],
     verses: ['ps231', 'thess518'],
-    songs: ['s6', 's5'],
+    songs: ['g1', 'g2', 'g3', 'g4', 'g5'],
     topics: [
       { keys: ['감사', '고마', '감동'], label: '감사',
         line: '감사한 마음이 오래 남는 날은 그 자체로 선물이에요.' },
@@ -267,7 +340,7 @@ const NEUTRAL = {
     ]
   ],
   verses: ['ps3418', 'mt1128'],
-  songs: ['s1', 's4'],
+  songs: ['t1', 'l1', 't5'],
   topics: []
 };
 
@@ -430,7 +503,19 @@ function guessEmotion(text) {
   return best;
 }
 
-function compose(emotionId, text) {
+function pickSong(emo, topics, seed, excludeId) {
+  const pinned = topics.map(t => TOPIC_SONGS[`${emo.id}/${t.label}`]).find(list => list && list.length);
+  let pool = (pinned && pinned.length) ? pinned.slice() : emo.songs.slice();
+  // 같은 감정이 이어질 때 바로 앞 곡이 또 나오지 않도록 (묶음에 여유가 있을 때만)
+  if (excludeId && pool.length > 1) {
+    const rest = pool.filter(id => id !== excludeId);
+    if (rest.length) pool = rest;
+  }
+  const id = pool[mix(seed + 101) % pool.length] || emo.songs[0];
+  return { id, ...SONGS[id] };
+}
+
+function compose(emotionId, text, opts = {}) {
   let emo = EMOTIONS.find(e => e.id === emotionId) || null;
   if (!emo) emo = guessEmotion(text) || NEUTRAL;
 
@@ -447,14 +532,14 @@ function compose(emotionId, text) {
 
   const verseId = (topics.find(t => t.verse) || {}).verse
     || emo.verses[mix(seed + 17) % emo.verses.length];
-  const songId = emo.songs[mix(seed + 101) % emo.songs.length];
+  const song = pickSong(emo, topics, seed, opts.excludeSong || null);
 
   return {
     emotionId: emo.id,
     emotionLabel: emo.label,
     letter,
     verse: { ...VERSES[verseId] },
-    song: { ...SONGS[songId] },
+    song,
     topics: topics.map(t => t.label)
   };
 }
@@ -544,7 +629,9 @@ function onSave() {
     return;
   }
 
-  const built = compose(state.emotion, text);
+  const built = compose(state.emotion, text, {
+    excludeSong: state.entries[0] && state.entries[0].song ? state.entries[0].song.id : null
+  });
   const entry = {
     id: `e${Date.now()}${Math.floor(Math.random() * 1000)}`,
     createdAt: new Date().toISOString(),
@@ -576,6 +663,18 @@ function onSave() {
   show('comfort');
   window.scrollTo(0, 0);
   renderJournal();
+}
+
+/* ─────────────────────────────────────────────
+   찬양 링크
+   ───────────────────────────────────────────── */
+function songUrl(song) {
+  if (song && typeof song.youtubeUrl === 'string' && /^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/.test(song.youtubeUrl)) {
+    return song.youtubeUrl;
+  }
+  // 예전에 저장해둔 기록(곡 주소가 없던 시절)은 유튜브 검색으로 이어줍니다.
+  const q = encodeURIComponent(`${(song && song.title) || ''} ${(song && song.artist) || ''} 찬양`.trim());
+  return `https://www.youtube.com/results?search_query=${q}`;
 }
 
 function comfortMarkup(entry, opts = {}) {
@@ -614,14 +713,16 @@ function comfortMarkup(entry, opts = {}) {
         <cite>${escapeHtml(entry.verse.ref)}</cite>
       </section>
 
-      <section class="song">
+      <a class="song" href="${escapeHtml(songUrl(entry.song))}" target="_blank" rel="noopener noreferrer"
+         aria-label="유니버스에서 ${escapeHtml(entry.song.title)} 듣기 (새 창)">
         <span class="song-icon" aria-hidden="true">♪</span>
-        <div>
-          <p class="mini-label">함께 들으면 좋은 곡</p>
-          <p class="song-title">${escapeHtml(entry.song.title)}<span>${escapeHtml(entry.song.artist)}</span></p>
-          <p class="song-why">${escapeHtml(entry.song.why)}</p>
-        </div>
-      </section>
+        <span class="song-body">
+          <span class="mini-label">함께 들으면 좋은 곡</span>
+          <span class="song-title">${escapeHtml(entry.song.title)}<span>${escapeHtml(entry.song.artist)}</span></span>
+          <span class="song-why">${escapeHtml(entry.song.why)}</span>
+          <span class="song-listen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.4v13.2L19 12z"/></svg>유튜브에서 듣기</span>
+        </span>
+      </a>
 
       <button class="copy-btn" type="button" data-action="copy">
         ${iconSvg('copy')} 문구 복사하기
@@ -673,7 +774,8 @@ function entryToText(entry) {
     '',
     `[함께 들으면 좋은 곡]`,
     `${entry.song.title} — ${entry.song.artist}`,
-    entry.song.why
+    entry.song.why,
+    songUrl(entry.song)
   ];
   return lines.join('\n');
 }

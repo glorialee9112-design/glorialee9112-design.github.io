@@ -2,7 +2,7 @@
    - 문서(navigation)는 네트워크 우선, 실패하면 캐시 → 수정한 내용이 바로 반영됩니다.
    - 그 밖의 파일은 캐시 우선 + 백그라운드 갱신.
    - 경로는 모두 상대경로(./)라 GitHub Pages 하위 경로(/restore/)에서도 그대로 동작합니다. */
-const CACHE = 'restore-v1';
+const CACHE = 'restore-v2';
 const SHELL = [
   './',
   'index.html',
